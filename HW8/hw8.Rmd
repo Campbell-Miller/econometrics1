@@ -1,0 +1,109 @@
+---
+title: "Research Designs"
+author: "Campbell Miller"
+date: "Due by Noon on Friday, December 3rd"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+```{r echo=FALSE}
+library(pander)
+panderOptions('round', 2)
+panderOptions('keep.trailing.zeros', TRUE)
+options(scipen=1, digits=2)
+```
+
+__Directions__: You are encouraged to work together! Write your solutions in Rmarkdown and submit your solutions as a rendered HTML or PDF file. Only (sufficiently well done) HTML or PDF submissions will be counted as complete. Install packages in your R console and only load them in your markdown file. Installing packages in your markdown file will create an error. 
+
+
+## Difference-in-Difference
+
+In class, we used the dataset .mono[crime_unemp.csv] to explore the impact of the unemployment rate on violent crime. For this problem, include all of the regressions you run for parts 1 and 2 in a single stargazer table. 
+
+```{r}
+library(stargazer)
+library(tidyverse)
+library(broom)
+library(plm)
+library(lfe)
+library(fixest)
+library(modelsummary)
+
+setwd('C:/Users/campb/OneDrive/econometrics/hw8')
+data <- read.csv('crime_unemp.csv')
+```
+
+
+1. Estimate the relationship between property crime and the unemployment rate using the "canonical difference-in-difference" specification:
+
+$$Property_{s,t} = \alpha+\beta Unemp_{s,t} + \gamma_s + \delta_t + \varepsilon_{s,t}$$
+
+```{r, results='asis'}
+
+
+
+reg1 <-  felm(property.total ~ unemployment  | state + year | 0 | state, data = data)
+
+
+
+stargazer(reg1, keep.stat = c("n", "rsq"), title = "Diff in Diff of Property Crime and Unemployment",
+          covariate.labels = c("Unemployment"), dep.var.labels = c("Propety Crime"), type = "html", keep = c("unemployment"))
+```
+The relationship shows that every unit of unemployment creates 1.4 units of property crime.
+
+
+
+2. How sensitive is the coefficient on unemployment to how we deal with time effects (i.e. how do the results change if we do not control for time fixed effects or if we instead control for a linear or quadratic trends)?
+
+```{r, results='asis'}
+#no time control
+reg2 <- felm(property.total ~ unemployment | state | 0 | state, data = data)
+
+#linear
+reg3 <- felm(property.total ~ unemployment + year | state | 0 | state, data = data)
+
+data <- data %>%
+  mutate(trend = year - min(year),
+         qtrend = (trend * trend))
+
+#linear 
+reg4 <- felm(property.total ~ unemployment + trend | state | 0 | state, data = data)
+
+#quadratic
+reg5 <- felm(property.total ~ unemployment + trend + qtrend | state | 0 | state, data = data)
+
+
+stargazer(reg1, reg2, reg3, reg4, reg5, keep.stat = c("n", "rsq"), title = "Regressions on Unemployment on Property Crime",
+           covariate.labels = c("Unemployment", "Linear Trend", "Quadratic Trend"), dep.var.labels = c("Property Crime"), type = "html", keep = c("unemployment", "trend", "qtrend"))
+
+
+
+```
+Reg2 shows a no time effect regression which results in a much larger value (17) of how unemployment effects property crime than what we saw in reg1 in part 1. Reg3 and reg4, the linear time effect regressions shows a large negative impact of unemployment on property crime. The quadratic regression, reg 5 shows a value in between the no time control and linear time controlled regressions.This shows the unemployment coefficient is pretty sensitive to time effects.
+
+
+
+## Reading Research
+
+Skim the  paper "Misaligned incentives and the scale of incarceration in the United States" by Aurelie Ouss.
+
+1. Describe the main research design in the study. 
+
+There is a law passed that shifts the costs of putting minors in prison from the states onto the counties. The number of juveniles sent to state facilities before the law pass and after the law passed is looked at.
+
+
+2. Would __you__ (not the author) classify the research design as a regression discontinuity design, a difference-in-difference design, a before and after comparison, or a cross-sectional comparison?
+
+
+It seems like a before and after comparison of the number of minors entering the facilities before and after the law is passed.
+
+3. What does the paper find? 
+
+They find that there is a drop of 40% of the amount of juveniles that are incarcerated with no change in the number of arrests.
+
+
+4. Do you think the result is credible? If not, describe the confounder you are worried about. 
+
+I would be interested to the factors that led to the law changes, especially since from other portions of the paper it seems that states are still the main bodies that pay for prisons so it does not seem like this law passing changed much in other areas. They only look at if the number of arrests change not if the type of crimes differ. If people are getting arrested for minor infractions they wouldn't get jail time so this could lower the amount of people sent to prison. This should be controlled for.

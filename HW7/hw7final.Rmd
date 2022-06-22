@@ -1,0 +1,198 @@
+---
+title: "A Non-Compliance Simulation"
+author: Campbell Miller
+date: "Due by noon on Friday, November 19th"
+output:
+  pdf_document: default
+---
+
+```{r echo=FALSE}
+library(pander)
+panderOptions('round', 2)
+panderOptions('keep.trailing.zeros', TRUE)
+options(scipen=1, digits=2)
+```
+
+__Directions__: You are encouraged to work together! Write your solutions in Rmarkdown and submit your solutions as a rendered HTML or PDF file. Only (sufficiently well done) HTML or PDF submissions will be counted as complete. Install packages in your R console and only load them in your markdown file. Installing packages in your markdown file will create an error. 
+
+
+
+In this problem, we will simulate a data to better understand non-compliance and local average treatment effects. Specifically, we will assume people make participation decisions entirely based on their earnings with or without the training less any costs of the training. __This will determine whether someone is an always taker, never taker, complier, or defier.__
+
+For this exercise, assume we are evaluating the impact of earning a certificate from a community college on a worker's earnings. If someone is in the treatment group, they receive the training for free. But someone in the control group can pay to enroll in the program on their own for $1,000$.
+
+Simulate a sample of $10,000$ observations from the following data generating process:
+* $Y_0 \sim \mathcal{N}(20000,5000^2)$
+* $Y_1 \sim \mathcal{N}(20500,5000^2)$
+where $Y_0$ is earnings without the training and $Y_1$ represents earnings with the training. The first parameters are the means of the normal distributions and the second parameters are the variances (i.e. the standard deviations squared).
+
+Hint: We will increase the sample size later, so write your code so you can easily change the sample size.
+
+```{r}
+set.seed(12376)
+
+y0 <- rnorm(10000, mean = 20000, sd = 5000)
+
+y1 <- rnorm(10000, mean = 20500, sd = 5000)
+
+
+
+
+
+
+```
+
+The advantage of a simulation is that we can overcome the *Fundamental Problem of Causal Inference* - we can observe an individual's potential outcome in both the treatment and control conditions because we are making up the data!
+
+
+
+1. What is the average treatment effect in your sample? How does it compare to the true average treatment effect in the population?
+
+## Answer
+
+```{r} 
+mean(y1)
+mean(y0)
+
+data <- data.frame(Y0 = y0, Y1 = y1)
+
+```
+The true mean of the average treatment earnings is 20500. The average untreated earnings are 20000. So the average treatment effect is 500. The mean of average treatment earnings in my sample is 20532.69, while the mean of the untreated earnings in my sample is 20038.57. So the average treatment effect in my sample is an additional 494.12 to earnings. This is a bit lower than the true average treatment effect of 500.
+
+
+
+
+2. Given our assumption that people choose to get the training based on their net benefits (i.e. earnings gain - costs of training), what share of your sample are compliers, always takers, and never takers?
+
+## Answer
+```{r}
+library(tidyverse)
+library(dplyr)
+
+data <- data %>%
+ mutate(AT = (Y1 - Y0) >= 1000)
+
+data <- data %>%
+  mutate(NT = (Y1 - Y0) <= 500)
+
+data <- data %>%
+  mutate(C = (Y1 - Y0) > 500 & (Y1 - Y0) < 1000)
+
+table(data$C)
+table(data$AT)
+table(data$NT)
+```
+My sample's share of always takers is 47.54%, the share of never takers is 49.87%, and the share of compliers is 2.59%.
+
+
+3. What is the average impact of the training for compliers, always takers, and never takers? 
+
+
+## Answer
+```{r}
+ATdata <- data %>%
+  filter(AT == TRUE) %>%
+  mutate(AvgImpactAT = (mean(Y1) - mean(Y0))) 
+summary(ATdata)
+
+NTdata <- data %>%
+  filter(NT == TRUE) %>%
+  mutate(AvgImpactNT = (mean(Y1) - mean(Y0)))
+summary(NTdata)
+
+Cdata <- data %>%
+  filter(C == TRUE) %>%
+  mutate(AVGImpactC = (mean(Y1) - mean(Y0)))
+summary(Cdata)
+```
+The average impact of training for always takers is 6466. The average impact of training for never takers is -5,211. The average impact of training for compliers is 718.8
+
+ 4. Why is it reasonable to assume there are no defiers given our assumptions about how people are making participation decisions?
+
+## Answer
+
+We are assuming that individuals care only about the net benefits (the earnings gained minus the cost of training). This would mean that each person can only fall into the other three categories. A defier would defy due to reasons outside of the experiment such as wanting the experiment to fail or wanting to defy the person giving the treatment. If people are only making choices based on net benefits then they will either always see benefits from training, see benefits from training when given it for free, or never see benefits for training, putting them in one of the three previous categories. The monotonicty assumption states that treatment only encourages participation. Making this assumption ensures that there are no defiers in the sample.
+
+
+So far, we have been using the full sample because we observe both potential outcomes. Now, let's pretend we are in the real world and only observe the outcome that results from someone's participation decision. To this end, randomly assign half of your sample to a treatment group and half to a control group.
+
+```{r}
+data <- data %>%
+  mutate(T = rbinom(10000, size = 1, p = 0.5))
+
+
+```
+
+Generate an indicator $P$ that equals 1 if someone receives the training and 0 otherwise. Remember: we have assumed people make participation decisions entirely based on their earnings with or without the training less any costs of the training. This should depend on the observations treatment status.
+
+```{r}
+data <- data %>%
+  mutate(P = ifelse(T == 1 & C == 1 | AT == 1,1,0))
+
+```
+
+Generate a variable $Y$ equal to observed earnings using the following formula: $Y=PY_1+(1-P)Y_0$.
+
+
+```{r}
+data <- data %>%
+  mutate(Y = (P * y1) + ((1 - P) * y0))
+
+```
+
+
+5. Use a regression to estimate the intent-to-treat effect in your sample. What is the point estimate and  the 95\% confidence interval around the estimate?
+
+
+## Answer
+
+```{r}
+library(sandwich)
+library(stargazer)
+
+reg1 <- lm(Y ~ T, data = data)
+robust_se1 <- sqrt(diag(vcovHC(reg1, type = "HC3")))
+
+stargazer(reg1, title = "Regression for ITT", type = 'text')
+
+PointEffect= 16
+lowerbound = 16 - (83 * 1.96)
+upperbound = 16 + (83 * 1.96)
+
+
+```
+
+The point estimate is 16 and the confidence interval is (-146.68, 178.68)
+
+7. Use two-stage least squares to estimate the local average treatment effect in your sample. Comment on the point estimate and the 95\% confidence interval around the estimate. How does this compare to the effects we estimated earlier in this problem?
+
+## Answer
+
+```{r}
+library(AER)
+
+
+
+reg2 <- ivreg(Y ~ P | T, data = data)
+
+
+robust_se2 <- sqrt(diag(vcovHC(reg2, type = "HC3")))
+
+stargazer(reg2, title = "Regression for 2 Stage Least Squares", type = 'text')
+
+PointEstimate = 612
+LowerBound = 612 - (3077 * 1.96)
+UpperBound= 612 + (3077 * 1.96)
+
+```
+The point estimate is 612 and the confidence interval is (-5418.92, 6642.92)
+
+
+
+8. Re-run your code but drawing a sample of $1,000,000$ observations instead of $10,000$. How does the estimated LATE compare to the earlier treatment effects now?
+
+## Answer
+
+I ran the code with a sample of a million on another r script as I was not sure how to keep all my original answers here and getting new ones.
+
+The estimated LATE went from 612 with the 10,000 sample size, to 927 with the one million sample size.

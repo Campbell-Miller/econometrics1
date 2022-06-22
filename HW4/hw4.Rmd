@@ -1,0 +1,324 @@
+---
+title: "Inferences about relationships"
+author: Prof. Jonathan Davis
+date: "Due by Friday, October 29th"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+```{r echo=FALSE}
+#This block code will make knitting faster by saving output of code chunks.
+# Note that code chunks won't re-run unless you edit them so be careful!
+knitr::opts_chunk$set(cache =TRUE)
+```
+
+
+# Question 1
+
+
+a. True/False/Uncertain: P-values tell us the probability that the null hypothesis is true. Justify your answer.
+
+False. The p value tells you the probability of obtaining results at least as extreme as the observed results assuming that the null hypothesis is correct. A smaller p value means there is stronger evidence for the alternative hypothesis.
+
+b. True/False/Uncertain: A result is important if it is statistically significant. Justify your answer.
+
+This is not usually true. A result can be rigged to say it is statistically significant through tampering methods like p hacking and selective inference. In these cases a statistically significant conclusion does not mean that the result is important. In other cases where all needed precautions are taken to ensure research methods are done correctly, a stastically significant conclusion coule point towards being an important result.
+
+
+# Question 2
+
+In this question, we will explore the performance of pre-election pools.
+
+We will use two datasets:
+
+The file __polls2016_clean.csv__ is based on data downloaded from FiveThiryEight.com which collected polls from HuffPost Pollster, RealClearPolitics, polling firms and news reports. I restricted the data to fields you needed and recoded the state variable to be state abbreviations.
+
+
+--------------------------------------------------------------------------------
+ Name                 Description
+ -------------------- ----------------------------------------------------------
+ `state`                 State
+
+ `startdate`                 Start Date of Poll
+
+ `enddate`                 End Date of Poll
+
+  `grade`                 538's Grade for Pollster
+
+ `samplesize`                 Poll's Sample Size
+
+ `population`                 `lv` Likely Voters or `rv` Registered Voters
+
+  `rawpoll_clinton`                 Clinton Share in Poll
+
+   `rawpoll_trump`                 Trump Share in Poll
+ --------------------------------------------------------------------------------
+
+
+The file __federalelections2016.xlsx__ includes results from the 2016 US presidential election. It was downloaded from: https://transition.fec.gov/general/FederalElections2016.shtml. You will need to open this file in excel to figure what data you need and how to get it in to R.
+
+
+## Preparing the data
+
+Load the datasets in R. Remove commas from vote counts in the election results data using the `gsub()` function and generate Clinton and Trump's share of the .hi-pink[total] vote.
+
+Limit the polling data to polls surveying likely voters (`lv`) or registered voters (`rv`). Use the `as.Date(, "%m/%d/%Y")` function to make sure R treats the variable EndDate like a calendar date.
+
+Use the `dim()` function to check the number of rows and columns of each file.
+
+Merge the files together by state using the merge function or whatever variant you prefer. What are the dimensions of the merged file?
+
+```{r}
+setwd("C:/Users/campb/OneDrive/econometrics/HW4")
+
+library(tidyverse)
+library(broom)
+library(ggplot2)
+library(openxlsx)
+library(dplyr)
+
+#load data sets
+polls <- read.csv("polls2016_clean.csv")
+election <- read.xlsx("federalelections2016.xlsx", sheet = 3)
+
+#use gsub to remove commas
+gsub(",([[:digit:]])", "\\1", election)
+
+#limit to lv and rv
+rvlvpolls <- polls %>%
+  filter(population == "lv" | population == "rv")
+
+
+
+#as.date to change enddate to look like a calender date
+
+rvlvpolls <- rvlvpolls %>% mutate(enddate = as.Date(enddate, "%m/%d/%Y"))
+
+#polls$enddate <- as.Date(polls$enddate, format = "%m/%d/%Y")
+
+
+  
+#dim
+
+dim(election)
+dim(polls)
+
+poll_ele <- merge(rvlvpolls, election, by = "state")
+
+dim(poll_ele)
+#The merged file has 9054 rows and 14 columns
+```
+
+
+
+
+##  Trends in Pollings
+
+Use ggplot to show how Clinton's predicted vote shares (`rawpoll_clinton`) evolved over time. Use the color= aesthetic within ggplot to explore whether their were systematic differences between polls of likely and registered voters. Comment on the figure.
+
+```{r}
+ggplot(poll_ele, aes(x = enddate, y = rawpoll_clinton)) +
+  geom_point(aes(color = population)) +
+  xlab("End Date of Polling") + ylab("Clinton Predicted Vote Share") 
+  
+#The registered voters are seen mostly through the first few time #periods with few likely voters but for the last time period the #amount of likely voters sharply increased along with Clinton's #vote share predictions.
+
+
+```
+
+
+# Polls and Results
+
+Now, limit the sample to polls of likely voters that ended on or after September 1st, 2016.
+
+Use ggplot to make a scatter plot of the predicted Clinton share `rawpoll_clinton` against Clinton's actual vote share `ClintonShare` in each state. Divide `rawpoll_clinton` by 100 to make it range from 0 to 1 rather than 0 to 100.
+
+# Answer
+
+```{r}
+#new date frame that filters previos oone to only pop lv and end date >= sept 1
+
+lvpolls <- poll_ele %>%
+  filter(population == "lv") %>%
+  filter(enddate >= as.Date("2016-09-01"))
+
+lvpolls$POPULAR.VOTE.1 <- as.numeric(as.character(lvpolls$POPULAR.VOTE.1))
+
+lvpolls$POPULAR.VOTE.3 <- as.numeric(as.character(lvpolls$POPULAR.VOTE.3))
+
+
+#create variable clintoshare that shows actaul vote share
+lvpolls <- lvpolls %>%
+  mutate(ClintonShare = POPULAR.VOTE.1/POPULAR.VOTE.3)
+  
+
+lvpolls$POPULAR.VOTE.1 <- as.numeric(as.character(lvpolls$POPULAR.VOTE.1))
+
+lvpolls$POPULAR.VOTE.3 <- as.numeric(as.character(lvpolls$POPULAR.VOTE.3))
+
+sapply(lvpolls, class)
+#scatterplt of predicted rawpoll_clinton against ClintonShare in each state.
+
+ggplot(lvpolls, aes(x = ClintonShare, y = rawpoll_clinton/100)) +
+   xlab("Clinton's Actual Vote Share") + ylab("Clinton's Predicted Vote Share") +
+   geom_point() 
+
+
+```
+
+# Bias in Polls
+Calculate the average bias in the polls, where bias is defined as:
+
+$$Bias=\hat{p}-p$$.
+
+# Answer
+```{r}
+
+# calculate bias where bias is estimated poll share - actual poll share
+lvpolls <- lvpolls %>%
+  mutate(bias = rawpoll_clinton/100-ClintonShare)
+
+mean(lvpolls$bias)
+
+lvpolls$POPULAR.VOTE.1 <- as.numeric(as.character(lvpolls$POPULAR.VOTE.1))
+
+lvpolls$bias <- as.numeric(as.character(lvpolls$bias))
+
+mean("bias")
+
+
+
+
+```
+
+Does the bias vary with FiveThiryEight's grade for the pollsters (`grade`)?
+
+```{r}
+
+#does bias change when including the polls grade
+
+gradebias <- lvpolls %>% group_by(grade) %>% summarize(mean_bias = mean(bias))
+
+var(gradebias$mean_bias)
+
+```
+
+
+# Margins of Error
+
+The variance of a binary random variable, $X$, is equal to $P(X=1)\times(1-P(X=1))$. We saw in class that the standard error of a mean is given by:
+
+$$SE(\bar{X})=\sqrt{\frac{\sigma^2}{N}}$$.
+
+Since support for Clinton is a binary variable, the standard error of a poll asking Clinton's vote share is given by:
+$$SE(\bar{X})=\sqrt{\frac{p(1-p)}{N}}$$
+where $p$ is the true level of support Clinton.
+
+Since $p$ is unknown at the time of the poll, the estimated standard error is:
+$$\hat{SE}(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{N}}$$.
+
+
+Use `rawpoll_clinton` (divided by 100) and the sample size to calculate the standard error and 95% confidence interval around the predicted vote share. Remember that the confidence interval's lower and upper bounds are $\hat{p}-1.96\times SE(\hat{p})$ and $\hat{p}+1.96\times SE(\hat{p})$, respectively.
+
+# Answer
+```{r}
+
+avgClintonSupport <- mean(lvpolls$rawpoll_clinton/100)
+
+seClinton <- sqrt(avgClintonSupport*(1-avgClintonSupport)/sum(lvpolls$samplesize))
+
+lowerbound <- (avgClintonSupport-(1.96*seClinton))
+upperbound <- (avgClintonSupport+(1.96*seClinton))
+
+
+
+
+
+```
+
+
+# Errors in Polling
+
+For what percentage of polls was Clinton's true vote share outside of the 95% confidence interval around the predicted vote share? (Remember that the standard error is based on a probability ranging from 0 to 1 but shares are sometimes 0 to 100.)
+
+# Answer
+```{r}
+
+#how many true vots were outside the CI
+
+
+pollsAboveUpper <- lvpolls %>%
+  filter(rawpoll_clinton/100 > upperbound)
+pollsBelowLower <- lvpolls %>%
+  filter(rawpoll_clinton/100 < lowerbound)
+
+totalOutsideCI <- count(pollsBelowLower) + count(pollsAboveUpper)
+totalOutsideCI
+
+PercentOutside <- totalOutsideCI/count(lvpolls)
+PercentOutside
+
+
+```
+
+Does this vary by grade of pollster?
+
+# Answer
+```{r}
+
+#gradebias <- lvpolls %>% group_by(grade) %>% summarize(mean_bias = mean(bias))
+#var(gradebias$mean_bias)
+
+#what is the number of estimated polls outside of teh CI for each grade
+
+#made column for dataset that says if rawpoll is outside of CI
+lvpolls <- lvpolls %>% 
+  mutate(polls_outside_CI = ifelse(rawpoll_clinton/100 > upperbound | rawpoll_clinton/100 < lowerbound, 1, 0))
+  
+PollsWrongByGrade  <- lvpolls %>%
+  group_by(grade) %>% 
+  filter(polls_outside_CI == 1)
+
+PollsWrongByGrade %>%
+  group_by(grade) %>%
+  summarize(AverageRawPoll = mean(rawpoll_clinton/100))
+
+#The results show that the results of those outside the confidence interval varied
+# based on grade a bit. The variance is .008022 so they dont vary much.
+
+var(PollsWrongByGrade$rawpoll_clinton/100)
+
+
+
+```
+
+# Were the polls wrong?
+
+The consensus view leading in to the 2016 election was that the pre-election polls indicated Hillary Clinton would win the election. Were the polls wrong?
+
+# Answer
+
+In the confidence interval, most of the observations of polls were above the upper bound limit, this shows that most of the pollsters believed that Clinton's chance of winning was higher than what was actually seen. This shows that the polls were wrong. The confidence interval shows a 95% confident that the actual amount of polls are in the interval we calculated. If most of the observations are above the interval then most of the polls thought she had a better chance to win then she ended up having.
+
+
+# R Markdown tips and tricks
+
+These tips are best read in the .Rmd template file (not the rendered html file).
+
+You can include R results in text using the following syntax `2+2`.
+
+If you want to show a block of R code, but you dont' want to run it, you can use the following syntax:
+
+```{r, eval=FALSE}
+
+```
+
+Or if you want to show results from R but you don't want to show the code, you can instead use this syntax:
+
+```{r, echo=FALSE}
+
+```
+
+If you don't want warnings to show up with the results, you can use the `warning=FALSE` option.

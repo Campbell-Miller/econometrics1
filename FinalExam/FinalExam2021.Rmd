@@ -1,0 +1,397 @@
+---
+title: "EC523/423 Final Exam - Fall 2021"
+author: "Campbell Miller"
+date: "Due by 5pm on Friday, December 10th"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+__Directions__: Write your solutions in Rmarkdown and submit your solutions as an __HTML or PDF__ file. Show your code but do not submit your .Rmd file. Install packages in your R console and only load them in your markdown file. Installing packages in your markdown file will create an error. 
+
+This is an individual assignment.  You __are allowed__ to use the internet as long as it's not correspondence with a human giving you the answers. Working together will be considered cheating. I have to be mean when I catch cheating and it is really annoying, so don't cheat! I don't give many really bad grades, but I always give a bad grade when I catch cheating. Do your best and you will do great! You don't have to be perfect to be successful in this class!
+
+
+# 1. Understanding key concepts. (7.5 points each)
+
+
+1.A Evaluate the following statment: If a result is statistically significant, there is a 95% probability that it is true.
+
+
+
+If a result is statistically significant at a 95% level of significance, then you are confident that the results you observe would be real 95% of the time and not an error caused by chance. The idea is that a statistically significant results shows that that the result is not likely due to chance (though it can still be wrong 5% of the time at a 95% significance level).
+The statement says that there is a 95% probability that the result is true which is different from saying you are confident that the result is real and not caused by chance 95% of the time. Just because the result is significant does not mean it is a true effect. Researchers can use p-hacking methods like basing controls on what will show up as significant to show statistically significant results that are not true results. This shows that statistically significant effects can potentially be false because they have been done in a way so as to appear significant
+
+
+
+1.B Evaluate the following statement: Statistical significance is an important concept becuase it tells us how likely it is for an estimate to be biased.
+
+
+Statistical significance shows us that a result is likely not due to chance, although it could still be wrong at varying confidence levels. Bias is the tendency for your results to over or underestimate your parameter. Bias can be caused in many ways such as errors in the ways the sample were collected, errors in the way that measurements were taken, or not taking a randomized sample that is representative of the population. The bias of an estimator is how different the result from your experiment (the expected value) is from the true value of the population of interest. Bias cannot be measured and the way to get rid of bias is through proper experimental design. This shows that the statement is wrong because statitical significance does not show that the estimate is biased (that cannot be measure); it instead shows that the results obtained were likely not due to chance. Just because a result is statistically significant does not tell you anything about the bias because for example the sampling could of been done perfectly with no bias or terribly with massive bias, but both results have the potential to show statistical significance.
+
+
+
+
+
+
+
+# 2. Developing a Research Design (20 points)
+
+Imagine you are interviewing with  Microsoft for an economist position. They want you to help figure out the best way to set prices for their Azure cloud computing service. 
+
+With this service, individuals or companies can rent very fast computers to run an analysis. The price will vary with how much computing power someone is using and possibly with how many other people are using the service (surge pricing).
+
+Propose a research design to measure the impact of charging a fixed price per unit of computational power used that is constant over the day versus using a surge pricing model. 
+
+Note that this is a simplified model of their pricing.  I do not recommend basing this on their actual pricing model. 
+
+<br/>
+
+
+The thing you most want to avoid in a research design is creating bias, so the first thing to do is make sure you are not creating sampling error or measurement error and that we are controlling for confounders. We want to see the impact of using a fixed price model vs a surge pricing model which charges more when more people are using the service.
+
+A/B testing uses a randomized experiment with two variants of the same variable (computing power price structure). For this experiment the two variants are fixed price model or surge price model of computing services. We want to measure the impact of the different pricing structure, which would be the amount of computing power that is used. This amount of computing power that is used is thus our dependent variable that we wish to see the effects of the two variants on. Since we are looking at two variants of one method an A/B testing randomized experiment can be done.
+
+It seems from the prompt that the fixed price method is currently being used since it says that surge pricing possibly might be used. This makes the fixed price structure our control, and the price structure is our treatment/challenger. To avoid bias we have to randomly split our sample group, since the researchers are randomly assigning the treatment the connection between treatment and unobservable characteristics is broken.We would need to determine the sample size to try and make sure the results would be statistically significant and choose a confidence level of 95%. 
+
+After all the basics are done and the sample is split randomly on who gets the treatment and not we run the experiment at the same time. The control group is assigned fixed price structure and the treatment group is assigned surge pricing. Let the experiment run long enough to find statistically significant results and record the data of how much computing power was used with the different methods and when it changed. 
+
+With the data collected we want to run a regression on what we have obtained. In the regression we will run the treatment group surge pricing on amount of computing power, in the form computingpower~surgepricing. To ensure no bias we also control for all confounders (variables that are correlated with the output and the covariate) in this regression. A control could be wealth, since more wealthy people wont care about surge pricing as much maybe they don't change their habits even if prices go up, and they might have more expensive equipment which can handle higher levels of computing, in this way their wealth is correlated with the outcome and the coavariate. Once all the confounders are controlled for in the regression we can be sure that the results are not biased. 
+
+Using the data from the regression we can see if the results are statistically significant and make a confidence interval. If the surge pricing shows a positive coefficent, meaning that the amount of computing used was higher than the fixed price structure based on that coefficient for each unit, then we can adjust the methods we use. If the goal is less computational power used and the coefficient for surge pricing is positive then we might want to use the fixed price structure. Ideally we would redo the experiment with a new randomized selection of customers to see if similar results are received.
+
+This design lets us compare the two pricing structures and how they affected the amount of computing power used with what we would assume is zero bias since we controlled for all confounders and randomized the sample. This should give us information on possible ways to change our price structure based on the desired policy goal. The experiment is also able to be repeated which will either lend increased confidence to our study if similar results are obtained or show that we might have gotten an sample that does not match the true population by chance, if the results are widely different. 
+
+
+
+
+# Tennessee Star Experiment (65 points)
+
+The dataset STAR_Students.csv is from the Tennessee Student Teacher Achievement Ratio (STAR) project. This randomized controlled trial was implemented in Tennessee to measure the impact of having a teacher-student ratio of 20 students, 30 students, or 30 students + a teacher's aide on student achievement. The file "STAR User Guide.pdf" is a user guide for the data, including variable definitions. 
+
+Note that this problem is based on a real coding exercise that was given to candidates for a full-time research associate position at the University of Chicago. 
+
+1. (5 points) Why is an experiment necessary? Or put another way, what confounders might bias the non-experimental correlation between class size and student performance?
+
+An important factor of experiements is that by randomizing the sample size, the connection between unobservable characteristics and treatment is cut off. A confounder is something that is correlated with both the covariate of interest and the outcome. In this case our covariate is the class size and our outcome is the students performance. Something that is correlated with both of these variables that could confound their correlation is wealth of families. A wealthy family will likely live in an area with smaller more elite schools or pay for private schools with smaller class sizes and they can also afford tutors and other methods to improve the students performance outside of class, in that way family wealth is correlated with smaller class sizes and student performance.In the same vein inherent quality of school could be a confounder because higher quality schools would likely have smaller class sizes and also have higher performing schools. To eliminate ommited variable bias, confounders must be controlled for.
+
+
+
+2. (5 points) The variable gkclasstype indicates treatment status in kindergarten. Use this variable to generate an indicator for being in a small class in kindergarten (so this variable is 1 if in a small class and 0 if in a regular class with or without an aide). Set this indicator to missing if equal to "NA". How many students were in small classes in kindergarten? 
+
+
+
+
+```{r}
+library(stargazer)
+library(tidyverse)
+library(broom)
+library(dplyr)
+library(janitor)
+
+setwd('C:/Users/campb/OneDrive/econometrics/final')
+data <- read.csv('STAR_Students.csv')
+
+#dummy var
+data <- data %>%
+  mutate(newgkclasstype = ifelse(gkclasstype == "SMALL CLASS", 1, 0))
+          
+#na.rm=TRUE
+
+data <- data %>%
+  select(newgkclasstype, everything())
+
+
+data %>% tabyl(newgkclasstype)
+datadropped <- data %>%
+drop_na(newgkclasstype)
+
+
+
+
+table(datadropped$newgkclasstype, exclude=NULL)
+table(data$newgkclasstype, exclude=NULL)
+
+
+
+```
+There were 1900 students in small classes in kindergarten.
+
+
+3. (15 points) Using the treatment status variable for kindergarten, gkclsstype, create a table showing whether or not student characteristics are balanced across treatment groups. Use observable characteristics that were determined prior to randomization. Report whether there are any statistical differences in observable characteristics across kindergarten treatment groups. Note that you will need to look through the documentation to select the baseline characteristics to include in the table.
+
+```{r, results='asis'}
+library(sandwich)
+
+#gender dummy
+data <- data %>%
+mutate(newgender = ifelse(gender =="MALE", 1, 0))
+#move column to front
+data <- data %>%
+  select(newgender, everything())
+
+#see if gender affects what class type theyre put into
+reg_newgender <- lm(newgender ~ gkclasstype, data = data, na.rm=TRUE)
+
+newgender_se <- sqrt(diag(vcovHC(reg_newgender, type = "HC3")))
+
+#race dummy
+data <- data %>%
+  mutate(newrace = ifelse(race == "WHITE", 1, 
+                          ifelse(race == "BLACK", 2, 
+                                 ifelse(race == "ASIAN", 3, ifelse(race == "HISPANIC", 4, ifelse(race == "NATIVE AMERICAN", 5,0)))))) %>%
+   select(newrace, everything())
+
+#see if gender affects what class type theyre assigned to
+reg_newrace <- lm(newrace ~ gkclasstype, data = data, na.rm=TRUE)
+
+newrace_se <- sqrt(diag(vcovHC(reg_newrace, type = "HC3")))
+
+#dummy for birthmonth
+data <- data %>%
+  mutate(newbirthmonth = ifelse(birthmonth == "JANUARY", 1,
+    ifelse(birthmonth == "FEBRUARY", 2,
+           ifelse(birthmonth == "MARCH", 3,
+                  ifelse(birthmonth == "ARPIL", 4,
+                         ifelse(birthmonth == "MAY", 5,
+    ifelse(birthmonth == "JUNE", 6,
+           ifelse(birthmonth == "JULY", 7,
+                  ifelse(birthmonth == "AUGUST", 8,
+                         ifelse(birthmonth == "SEPTEMBER", 9,
+  ifelse(birthmonth == "OCTOBER", 10,
+         ifelse(birthmonth == "NOVEMBER", 11, 0)))))))))))) %>%
+  select(newbirthmonth, everything())
+
+#see if birth month affects what class type theyre assigned to
+reg_newbirthmonth <- lm(newbirthmonth ~ gkclasstype, data = data, na.rm=TRUE)
+
+newbirthmonth_se <- sqrt(diag(vcovHC(reg_newbirthmonth, type = "HC3")))
+
+
+
+stargazer(reg_newgender, reg_newrace, reg_newbirthmonth, se = list(newgender_se, newrace_se, newbirthmonth_se),covariate.labels = c("Regular Class", "Small Class"), dep.var.labels = c("Gender", "Race", "Birth Month"), title = "Balance Test on Observable Characteristics and Class Type", keep = c("gkclasstype"), type = 'html')
+
+```
+Observable characteristics that are determined before randomization include the students gender, race, and birth month. By creating a balance test with regressions of the observable characteristic and kindergarten class type we can see if there are statistical differences in certain characteristics in different class types. The stargazer table shows that none of the coefficients are statistically significant so any differences in these variables across kindergarten class type are not significant. So we can assume that these observable characteristics are fairly balanced across treatment groups.
+
+
+```{r, echo=FALSE}
+#library(table1)
+#library(data.table)
+
+
+#all(is.na('gender'))
+#all(is.na('newgkclasstype'))
+
+
+#data$gender_clean <- data$gender
+
+#data$gender_miss <- 0
+#data$gender_miss[is.na(data$gender)] <- 1
+
+#data$gender_clean[data$gender_miss == 1 & data$gkclasstype == 1] <-
+  #mean(data$gender[data$gender_miss != 1 & data$gkclasstype == 1])
+
+#data$gender_clean[data$gender_miss == 1 & data$gkclasstype == 0] <-
+ # mean(data$gender[data$gender_miss != 1 & data$gkclasstype == 0])
+#all of this is supposed to remove na's in gender 
+#and replace them but doesnt work i think
+
+#see if gender and race affect what treatment group theyre in
+#reg_gender <- lm(newgkclasstype ~ gender, data=data)
+#gender_se <- sqrt(diag(vcovHC(reg_gender, type = "HC3")))
+#na.action=na.exclude,
+
+#HOW TO FIX Warning in storage.mode(v) <- "double" : NAs introduced by coercion
+#Error in lm.fit(x, y, offset = offset, singular.ok = singular.ok, ...) : 
+ # NA/NaN/Inf in 'y'
+#reg_race <- lm(race ~ newgkclasstype, data = data, na.action=na.omit)
+#class('gender')
+#class('gkclasstype')
+
+
+#reg_race <- lm(newgkclasstype ~ race, data = data)
+#race_se <- sqrt(diag(vcovHC(reg_race, type = "HC3")))
+
+#stargazer(reg_gender, reg_race, se = list (gender_se, race_se), covariate.labels = c("Male", "Black", "Hispanic", "Native American", "Other Race", "White"), dep.var.labels = ("Kindergarten Class Type"), title = "Different Predetermined Observable Charcteristics and if they vary by Class Type", type = 'text')
+
+
+#table(data$race, data$newgkclasstype)
+
+#gender_raw <- lm(newgkclasstype ~ gender, data= data)
+#gender_raw_se <- sqrt(diag(vcovHC(gender_raw, type = "HC3")))
+#gender_clean <- lm(newgkclasstype ~ gender_clean, data = data)
+#gender_clean_se <- sqrt(diag(vcovHC(gender_clean, type = "HC3")))
+#gender_miss <- lm(newgkclasstype ~ gender_miss, data = data)
+#gender_miss_se <- sqrt(diag(vcovHC(gender_miss, type = "HC3")))
+
+#see if clearing out NA or using them makes a difference
+#(gender_raw, gender_clean, gender_miss, se = list(gender_raw_se, gender_clean_se, gender_miss_se), covariate.labels = c("Male", "Male with no NA", "Missing Values"), dep.var.labels = ("Kindergarten Class Type"), title = "Different Data Spreads on Kindergarten Class Type", type = 'text')
+```
+
+
+
+
+
+
+4. (15 points) How does performance on fourth grade reading (g4treadss) and math tests (g4tmathss) for those students assigned to a small class in kindergarten compare with those assigned to a regular-sized class (with or without an aide? Do students in smaller classes perform better? Be sure to comment on both the magnitude and precision of the estimates.
+
+
+
+
+
+```{r, results='asis'}
+#filter data to small classes to check test score
+datasmall <- data %>%
+  filter(newgkclasstype == 1)
+reg1 <- lm(g4treadss ~ newgkclasstype, data = datasmall)
+reg1_se <- sqrt(diag(vcovHC(reg1, type = "HC3")))
+#assumes that na obervations are missing at random
+re1 <- lm(g4treadss ~ newgkclasstype, data=data[data$newgkclasstype>0,])
+re1
+#gives same result with no coefficient as the filtered data
+#so can use either one probably
+#just says base reading score if in small class in K is 628
+
+
+#filter data to regular classes to check test score
+dataregular <- data %>%
+  filter(newgkclasstype == 0)
+reg2<- lm(g4treadss ~ newgkclasstype, data = dataregular)
+reg2_se <- sqrt(diag(vcovHC(reg2, type = "HC3")))
+
+
+stargazer(reg1, reg2, re1, se = list (reg1_se, reg2_se), covariate.labels = ("Class Type"), dep.var.labels = ("4th Grade Reading Scores from Small Classes (Left) and Regular Classes (Right)"), title = "4th Grade Reading Scores from Kindergarten Class Type",  type = "html")
+
+#math score for small K class
+reg3 <- lm(g4tmathss ~ newgkclasstype, data = datasmall)
+reg3_se <- sqrt(diag(vcovHC(reg3, type = "HC3")))
+
+#math score for regular K classes
+reg4 <- lm(g4tmathss ~ newgkclasstype, data = dataregular)
+reg4_se <- sqrt(diag(vcovHC(reg4, type = "HC3")))
+
+stargazer(reg3, reg4, se = list (reg3_se, reg4_se), covariate.labels = ("Class Type"), dep.var.labels = ("4th Grade Math Scores from Small Classes (Left) and Regular Classes (Right)"), title = "4th Grade Math Scores from Kindergarten Class Type", type = "html")
+
+#general regression of kindergarten class type on reading score
+reg5 <- lm(g4treadss~ newgkclasstype, data = data)
+reg5_se <- sqrt(diag(vcovHC(reg5, type = "HC3")))
+
+reg6 <- lm(g4tmathss ~ newgkclasstype, data = data)
+reg6_se <- sqrt(diag(vcovHC(reg6, type = "HC3")))
+
+stargazer(reg5, reg6, se = list (reg5_se, reg6_se), covariate.labels = c("Kindergarten Class Type"), dep.var.labels = c("Grade 4 Reading Score", "Grade 4 Math Score"), title="Kindergarten Class Type on Grade 4 Scores", type = "html")
+```
+The first stargazer table (reading scores) shows a higher constant by 6 points for the data from only smaller class size in kindergarten. The second stargazer table (math scores) shows a higher constant for the smaller classes by about 3 points which is less than the previous tests but the average for math scores in both tests were higher.The magnitude is not massive for either test but the smaller classes did perform better. While the constants themselves do not tell much they do show that the baseline value for test scores from a student from a small class in kindergarten are higher.
+
+The third stargazer table shows a basic regression of kindergarten class type on reading and math scores. The coefficient is 6.1 for reading score and 2.483 for math score so the average effect of being in a small class in kindergarten is an increase of 6.1 points on the students 4th grade reading score and 2.483 points on their 4th grade math score. This shows that students do perform better in a small class, the effect is statistically significant to the .01 level for reading scores but is not statistically significant for math scores. The magnitude of the score increase is larger for the reading score and the standard deviation is smaller as well, showing it is more precise. If we were to assume that small classes in kindergarten is a benefit to test scores (which the results seem to point to), a reason for the lower value on math scores may be that in kindergarten there is not much focus on math skills and reading is more important so the reading score will be more heavily improved.
+
+
+
+5. (5 points) The variables g1classtype, g2classtype, and g3classtype indicate treatment status in first, second, and third grade. Generate a variable equal to the number of years that students were in small classes. Tabulate this variable against kindergarten treatment status.
+
+
+```{r}
+data <- data %>%
+  mutate(newg1classtype = ifelse(g1classtype == "SMALL CLASS", 1, 0)) %>%
+  mutate(newg2classtype = ifelse(g2classtype == "SMALL CLASS", 1, 0)) %>%
+  mutate(newg3classtype = ifelse(g3classtype == "SMALL CLASS", 1, 0))
+
+
+#newg1classtype <- as.numeric('newg1classtype')
+#newg2classtype <- as.numeric('newg2classtype')
+
+class('newg1classtype')
+
+#dataq5$newg1classtype <- as.factor(dataq5$newg1classtype)
+
+#dataq5$newg2classtype <- as.factor(dataq5$newg2classtype)
+
+
+#sort data in order
+data <- rowwise(data)  
+  
+#variable sum that is the sum of all the years
+data$sum <- data$newgkclasstype + data$newg1classtype + data$newg2classtype + data$newg3classtype
+
+class('sum')
+
+
+
+
+#tabulate sum againgst kindergarten class
+data %>% tabyl(sum, newgkclasstype)
+
+
+
+
+```
+The tabyl shows the sum from 0-4 of how many years a student was in a small class and the top row is 0 if they were in a regular or regular with aide class in kindergarten and 1 if they were in a small class in kindergarten.
+
+6. (10 points) Does participation in more years of small classes make a greater difference in test scores? Comment on the precision of the estimates. 
+
+
+```{r, results='asis'}
+#basic reg of sum of small classes on grade 4 reading score
+reg10 <- lm(g4treadss ~ sum, data = data)
+reg10_se <- sqrt(diag(vcovHC(reg10, type = "HC3")))
+
+
+#regressions while only looking at certain values of sum
+reg100 <- lm(g4treadss ~ sum, data = data[data$sum==0,])
+reg100_se <- sqrt(diag(vcovHC(reg100, type = "HC3")))
+
+reg101 <- lm(g4treadss ~ sum, data = data[data$sum==1,])
+reg101_se <- sqrt(diag(vcovHC(reg101, type = "HC3")))
+
+reg102 <- lm(g4treadss ~ sum, data = data[data$sum==2,])
+reg102_se <- sqrt(diag(vcovHC(reg102, type = "HC3")))
+
+reg103 <- lm(g4treadss ~ sum, data = data[data$sum==3,])
+reg103_se <- sqrt(diag(vcovHC(reg103, type = "HC3")))
+
+reg104 <- lm(g4treadss ~ sum, data = data[data$sum==4,])
+reg104_se <- sqrt(diag(vcovHC(reg104, type = "HC3")))
+
+
+#math scores
+reg20 <- lm(g4tmathss ~ sum, data = data)
+reg20_se <- sqrt(diag(vcovHC(reg20, type = "HC3")))
+
+
+reg200 <- lm(g4tmathss ~ sum, data = data[data$sum==0,])
+reg200_se <- sqrt(diag(vcovHC(reg200, type = "HC3")))
+
+reg201 <- lm(g4tmathss ~ sum, data = data[data$sum==1,])
+reg201_se <- sqrt(diag(vcovHC(reg201, type = "HC3")))
+
+reg202 <- lm(g4tmathss ~ sum, data = data[data$sum==2,])
+reg202_se <- sqrt(diag(vcovHC(reg202, type = "HC3")))
+
+reg203 <- lm(g4tmathss ~ sum, data = data[data$sum==3,])
+reg203_se <- sqrt(diag(vcovHC(reg203, type = "HC3")))
+
+reg204 <- lm(g4tmathss ~ sum, data = data[data$sum==4,])
+reg204_se <- sqrt(diag(vcovHC(reg204, type = "HC3")))
+
+
+
+stargazer(reg10, reg20, se = list (reg10_se, reg20_se), covariate.labels = c("Sum of Years in Small Class"), dep.var.labels = c("Grade 4 Reading Score", "Grade 4 Math Score"), title="Number of Years in Small Classes on Grade 4 Scores", type = "html")
+
+stargazer(reg100, reg101, reg102, reg103, reg104,  se = list (reg100_se, reg101_se, reg102_se, reg103_se, reg104_se), covariate.labels = "Sum of Years in Small Classes", dep.var.labels = "Grade 4 Reading Scores from 0 years in Small Classes (left) to 4 years in Small Classes (right)", title="Number of Years in Small Classes on Grade 4 Reading Scores", type = "html")
+
+stargazer(reg200, reg201, reg202, reg203, reg204,  se = list (reg200_se, reg201_se, reg202_se, reg203_se, reg204_se), covariate.labels = "Sum of Years in Small Classes", dep.var.labels = "Grade 4 Math Scores from 0 years in Small Classes (left) to 4 years in Small Classes (right)", title="Number of Years in Small Classes on Grade 4 Math Scores", type = "html")
+
+```
+Assuming we wish to look at the test scores we looked at previously. The first stargazer table looks at a regression of sum of years in small classes on the math and reading scores in 4th grade. The coefficients are 1.668 for reading and .804 for math. This shows that for each additional year in a small class, the student on average would see an increase of 1.668 on their reading score and .804 on their math score. This is statistically significant at .01 level for reading and .1 level for math scores. The standard error for this table is .390 for reading and .488 on math. The Reading coefficient is thus more than 3 standard deviations away from 0 while the math is about 2 away. This is why the reading coefficient is statistically significant at a higher level. This shows that participation of multiple years does make a difference in test scores. If a student at sum=0 is expected to start at the constant for reading scores of 622, they would see on average an increase of 1.66*4 improvement if they were in a small class from kindergarten through grade 4. This would increase their reading score to an average of 628.86 which is shown to be a statistically significant increase. The effect is smaller for math scores (714.78 to 717.997) but is still significant at a .1 level. 
+
+The stargazer tables 2 and 3 shows the constants for the scores on the two tests from number of years in small classes. While the y-intercept is just the base value for that level of small classes, it does show that 4 years in the small class had a base value of 8 points higher than the 0 years of small classes in reading. It also showed that the base value for maths was 3 points higher for 4 years in small classes versus 0 years. These results are not as telling as they are just the constant y-intercept values but they do show that the 4 years of small classes at a higher value than 0 years in both cases.
+
+
+
+
+7. (10 points) Given the success of the Tennessee Star experiment, California dedicated over 1 billion dollars to reducing its kindergarten through 3rd grade classroom sizes. Discuss challenges to the external validity of the Tennessee Star results that may have affected the realized benefits of California's classsize reduction program. 
+
+External validity is a discussion on how well the results of a study or experiment can be applied to settings outside of the experiment. The main components in deciding external validity are how well the findings can be generalized in other settings, how well they can be transferred to cases with similar settings, and how well they can be scaled into a larger implementation program. There are a few problems with the external validity of the Tennessee experiment which could affect the benefits of the California program. One problem is that the demographics of Tennessee and California are very different politically and racially, if certain races benefit more from the smaller class sizes the effects seen in the Tennessee Star experiment could be too small or too big. This shows how California and Tennessee have very different settings which could impact the external validity of the study. In the same vein, California is much larger than Tennessee so they likely have larger much larger class sizes in schools, so reducing the size down to the STAR program level could make it so that they have to hire a lot more teachers which could decrease the overall level of teachers in California, making the benefits of smaller class sizes smaller. There is also a problem in the types of tests used, if California uses different tests they could see differing effects. Maybe the tests that were used in Tennessee to see success with the experiment work well with small class sizes but the tests in California test different material in a different way and so the results could be different. Another problem could be if the teachers in the STAR program knew they were in a study to test small class sizes they could teach students to the test which would allow the students to score higher on the test but might not make them better students. This may happen because the teachers want to have small class size for more manageable classroom experiences in the future so they try to game the system to make the students in small classes score better. This would make the results in the STAR program be higher than they should be and make the California results lower than what would be expected. Since the results showing that the STAR program worked were mainly higher test scores, it ignores other things that could have happened that were negatives like maybe the students in the smaller classes had less friends so they studied more to get higher grades, this would not show that the small classes increased test scores but that the less social aspect increased test scores. In all since the STAR experiment was a randomized controlled trial the external validity for it in the same area, with similar students, in the same time zone, should be somewhat valid; but taking the results and using them for policy in a vastly different and distant area like California could be ineffective because the external validity may not be high in those circumstances.
+

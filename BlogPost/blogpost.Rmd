@@ -1,0 +1,264 @@
+---
+title: "League of Legends and Factors Contributing to Wins"
+author: "Campbell Miller"
+date: "11/8/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r message=FALSE}
+library(tidyverse)
+library(broom)
+library(stargazer)
+library(ggplot2)
+library(skimr)
+library(png)
+library(grid)
+library(sandwich)
+
+
+setwd("C:/Users/campb/OneDrive/econometrics/blogpost")
+
+#data2 <- read.csv("C:/Users/campb/OneDrive/econometrics/blogpost/diamond.csv")
+
+
+data <- read.csv("C:/Users/campb/OneDrive/econometrics/blogpost/2021_LoL_esports_match_data_from_OraclesElixir_20211111.csv")
+```
+
+
+
+
+
+# Introduction
+
+  League of Legends (League for short) is one of the most widely played competitive E-sports, with more than 2 million individual players in an average month and multi-million dollar professional player salaries and tournament payouts. The professional scene had over 138 million hours of combined watch time for the 2021 Worlds tournament. As an avid consumer of both the game and the competitive scene I am interested in analyzing statistics from different professional games to see if there are some variables that seem to be related to winning more games.
+
+  To begin with I will give a brief explanation of the game itself, to better explain why certain statistics are being looked at. League of Legends is a 5 versus 5 multiplayer team game where each team works together to destroy the enemy team's base. This is made easier by earning gold to buy items that make the champion you control stronger. Gold can be earned through a variety of methods, such as: killing enemy champions, killing minions, and destroying towers. There are also neutral objectives that when killed give permanent power to the team that killed them. Through this data analysis, I hope to see if there are certain factors that seem to significantly impact the odds of winning a game. This would ideally give the average League played an idea for how to adjust their own gameplay to win more often.
+
+  I will be using data from Oracles Elixir that contains data from all the professional games of League played from January through October of 2021.
+
+# Initial Analysis                   
+                            
+
+  The first thing I will look at is the effect of which side your team starts the game on. In League, each team is randomly assigned either the red side or blue side (Figure 1), where each side is not meant to influence win rate. I will initially test whether there is a distinct advantage in being randomly placed to start on one side of the map.
+
+<center>
+
+ ![Figure 1: Red and Blue Sides. (GamingVerdict)](C:\Users\campb\OneDrive\econometrics\blogpost\images\sides.png) 
+ 
+ </center>
+ 
+```{r, echo=FALSE, results='asis'}
+
+
+reg1 <- lm(result ~ side, data = data)
+
+robust_se1 <- sqrt(diag(vcovHC(reg1, type = "HC3")))
+
+stargazer(reg1, se = list(robust_se1), keep.stat = c("n", "rsq"), 
+          covariate.labels = c("Red Side"),
+          dep.var.labels = c("Win Rate"),
+          title = "Table 1: Win Rate Based on Side", 
+          type = "html", style = "qje")
+```
+  
+<br> 
+
+  From the regression of game result on side from Table 1, it is apparent that there seems to be an advantage to being the team that gets to play on blue side. Being selected to play on red side results in a 5.7% lower win rate than playing on the blue side. In best of 5 series this effect is reduced in some parts by letting the losing team of the previous game choose the side they prefer for the next game. However, there is still the first game of the series where side is determined by coin flip, as well as all the best of 1 series where the effect of what side you begin on is not able to be completely mitigated. A large reason for this blue side advantage could be that before a game of League, players must draft which champion they will play as in that game, each with distinct advantages and disadvantages. Blue side gets to pick the very first champion of this draft, and then it bounces back and forth with each side picking 2 champions in a row. The way this draft works could give the blue side an advantage because if a certain champion is very powerful at the moment or works well in certain circumstances, the blue side team gets the chance to pick that champion first. The results from the trend shown here seems to be showing that when given the chance, a team should choose to start on blue side if they want to improve their odds of winning.
+
+
+# Analysis of the NALCS
+
+  To look more in depth at the concept of changing sides as well as other points of interest, I will now restrict the data to just professional games played in the North American League of Legends Championship Series (NALCS). This will allow me to focus on one specific league and determine what factors may influence win rate in that league.
+
+  As can be seen in Table 2, after restricting the data to show only NALCS matches, and regressing game result on side; the win rate for red side has gone up a bit from the overall rate, but is still 3.2% less than the blue side win rate. This shows a result in which blue side seems to still have have an inherent advantage. A reason for the reduction in blue side win rate as compared to the overall matches could be because the NALCS is often seen as fielding very weak teams at the bottom of the standings. This would allow the teams that are clearly at the top to have an easier time beating the lower rated teams even if the lower rated teams get blue side advantage.
+
+
+
+
+```{r, fig.align="center", echo=FALSE, results='asis'}
+data <- data %>%
+  filter(league == "LCS") %>%
+  filter(position == "team")
+
+data <- data %>%
+  arrange(date)
+
+reg2 <- lm(result ~ side, data = data)
+
+robust_se2 <- sqrt(diag(vcovHC(reg2, type = "HC3")))
+
+stargazer(reg2, se = list(robust_se2), keep.stat = c("n", "rsq"), 
+          covariate.labels = c("Red Side"),
+          dep.var.labels = c("Win Rate"),
+          title = "Table 2: Win Rate Based on Side in the NALCS", 
+          type = "html", style = "qje")
+
+
+```
+<br>
+
+  To get an understanding of this smaller dataset, Figure 2 shows the 10 teams of the NALCS and their number of wins through the year 2021. It is clear that there were 4 top runners in 100T, C9, TSM, and TL; along with EG in the middle of the pack, while the other teams were on a much lower number of wins. This shows the intuitive idea that some teams are simply better than others. This idea means that just regressing certain variables on game result would not give a clear indication of how that variable truly impacts win rate. This is because a good team going against a bad team will likely win even if the bad team completes objectives that would be thought to increase the odds of winning. By controlling for the fixed effects of the teams in the regressions, the effects of having certain teams win more regardless of circumstances in games, should be minimized. This should allow us to see more clearly if certain variables seemingly do lead to a higher amount of wins
+
+
+```{r, fig.align="center"}
+data$team <- gsub("Team Liquid", "TL", data$team)
+data$team <- gsub("Counter Logic Gaming", "CLG", data$team)
+data$team <- gsub("100 Thieves", "100T", data$team)
+data$team <- gsub("Cloud9", "C9", data$team)
+data$team <- gsub("Dignitas", "DIG", data$team)
+data$team <- gsub("Evil Geniuses", "EG", data$team)
+data$team <- gsub("FlyQuest", "FLY", data$team)
+data$team <- gsub("Golden Guardians", "GG", data$team)
+data$team <- gsub("Immortals", "IMT", data$team)
+
+
+ggplot(data, aes(x = team, y = result)) +
+  geom_bar(stat = "identity", fill = "orangered4") +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme(panel.background = element_rect(fill = 'cadetblue')) +
+  xlab("Team") + ylab("Number of Wins") +
+  ggtitle('Figure 2: Number of Wins for NALCS Teams in 2021') +
+  theme(plot.title = element_text(hjust = 0.4))          
+
+
+
+
+```
+
+
+  In League the two most powerful neutral objectives a team can defeat are baron nashor and elder dragon. Defeating one of these gives massive power to your team and is often seen as a way to end the game in the next few minutes when taken. There are many times in late game decisions where each team will go and take one of these objectives while the other team takes the other. Table 3 shows the results of regressions of game results on baron and elder dragons taken. The fixed effects of differences in every team have been controlled for but I omitted their coefficients from the regression table as they are not important to this analysis. The table shows that every baron taken is correlated with a 42.9% higher chance of having that teams end result be a win, while every elder dragon taken is correlated with a 23.1% higher chance of an end result of a win. There are many factors that could be affecting game result other than those controlled for in this regression, but as a general trend it does seem like baron is a superior objective to defeat in order to increase your chances of winning. This is interesting because elder dragon was introduced in the latest season of League as a means of being a game ending increase of power. The big drawback of the elder dragon buff that could explain how the regression results are opposed to what we would expect is that the elder dragon buff only lasts a few minutes. This could give the enemy team a chance to stall until the increase in power is over, making the elder buff be not as effective as we would expect. These results show that perhaps if it is a situation where the two teams each take one of the neutral objectives, the team taking baron may be the ones getting the better choice.   
+
+```{r, echo=FALSE, results='asis'}
+
+#ask for help on cumsum how to move WR column to main dataset IF controlling for teams does not control for difference in teams
+
+reg3 <- lm(result ~ barons + as.factor(team), data = data)
+
+reg4 <- lm(result ~ elders + as.factor(team), data = data)
+
+robust_se3 <- sqrt(diag(vcovHC(reg3, type = "HC3")))
+
+robust_se4 <- sqrt(diag(vcovHC(reg4, type = "HC3")))
+
+
+stargazer(reg3, reg4, se = list(robust_se3, robust_se4), keep.stat = c("n", "rsq"), 
+          covariate.labels = c("Baron Taken", "Elder Taken"),
+          dep.var.labels = c("Win"),
+          title = "Table 3: Neutral Objectives on Chances of Winning in the NALCS", 
+          type = "html", omit = "team", style = "qje")
+
+
+```
+<br>
+  While the neutral objectives in the last regression are seen as the two big potential ways to end the game; the first ~20 minutes of every game of League are based almost solely around which team can earn the most gold. Earning this gold makes each player able to afford stronger items for the inevitable fights around baron and elder dragon. The ways to earn gold the quickest is by getting a kill on an enemy player or destroying an enemy teams tower. Killing a player usually grants 300 gold, while destroying a tower gives 250 gold to the player that destroys it and 50 gold to the rest of the players team. With these two factors giving essentially the same amount of gold, it could be expected that they would have a similar average impact on the outcome of a game. Table 4 shows regression results of game wins on kills and towers taken. Both factors show a positive correlation towards a game result of victory, but this data seems to represent a sample where a tower is almost twice as important as a kill. The coefficient for a kills shows that each additional kill is correlated with an average increase of 5.4% chance of a victory. The results also show that each tower taken is correlated with an average increase of 12% chance of victory. As the two variables being looked at here give similar amounts of gold there should be some reason towards the higher weight of taking a tower. There are individual benefits for both factors as killing an enemy removes them from the map for up to a minute which is all time they cannot be earning gold, while killing a tower removes a permanent structure of the enemy team that will no longer help them fight back. Basing judgement on these results would tell us that the effect of removing the tower and widening the map for your team is more likely to lead to a victory then taking a kill. In game many people prefer going for kills as it is a bigger spectacle and more fun to outplay and kill your enemy. However, if your goal is to win the game then these results tell us that going for the destruction of a tower will likely be the better choice.
+
+
+
+```{r, echo=FALSE, results='asis'}
+
+reg5 <- lm(result ~ kills + factor(team), data = data)
+
+reg6 <- lm(result ~ towers + factor(team), data = data)
+
+robust_se5 <- sqrt(diag(vcovHC(reg5, type = "HC3")))
+
+robust_se6 <- sqrt(diag(vcovHC(reg6, type = "HC3")))
+
+stargazer(reg5, reg6, se = list(robust_se5, robust_se6), keep.stat = c("n", "rsq"), 
+          covariate.labels = c("Kill", "Tower Taken"),
+          dep.var.labels = c("Win"),
+          title = "Table 4: Gold Earning Objectives on Chances of Winning in the NALCS", 
+          type = "html", omit = "team", style = "qje")
+
+
+
+```
+
+<br>
+
+# Brief Look at Differences Between Top and Bottom Teams
+
+
+So far I have been looking at how various factors are correlated with victories, but I want to briefly check out how some of these factors can change based on skill. Figure 2 showed a pretty distinct difference in number of wins from the top 5 and bottom 5 teams from the NALCS in 2021. I separated the dataset to be able to look at the top and bottom 5 teams of the NALCS separately. Table 5 shows a regression of result on elder dragon but the left side of the table looks at the top 5 teams and the right side looks at the bottom 5 teams. Perhaps initially counter intuitively, the results show that taking elder dragon is correlated with only a 19.4% average increase in chances of winning for top teams, while it is almost 30% for the bottom teams. As I mentioned before elder dragon was meant to be something that a team gets and almost ensures a win and while neither of these results goes quite that far it is clear that the bottom teams see much greater returns from the elder dragon power increase. This could be because the top teams are able to win much more consistently even without the effects of elder dragon so they do not need to rely on it as a win condition. Looking at it from the other side, the bottom teams could be so poor at actually ending the game even in a winning position that they need an extra boost to win the game, while the top teams can simply outplay their opponents. Judging by these results however, it seems like elder dragon is a more effective win condition for lower skilled teams. This could be important for the average League player who is not at the level of a professional player. The previous analysis showed that elder dragon was not a particularly good objective to aim for to if a team wants to win. By looking at different skill levels in the data we can see that perhaps it is more effective for lower skilled teams. This effect could potentially continue if we did analysis of lower skill levels such as amateur or college teams. If this trend continued it could show that the average League player should actually go for elder dragon despite the results we saw against this in Table 3. It would be interesting to add more data from other various levels of skills and test these theories further.
+
+
+
+```{r, echo=FALSE, results='asis'}
+datatop5 <- data %>%
+  filter(team == "C9" | team == "TSM" |team == "TL" |team == "100T" |team == "EG")
+
+reg7 <- lm(result ~ elders + as.factor(team), data=datatop5)
+
+
+robust_se7 <- sqrt(diag(vcovHC(reg7, type = "HC3")))
+
+databottom <- data %>%
+  filter(team == "FLY" | team == "DIG" | team == "IMT" | team == "CLG" | team == "GG")
+
+reg8 <- lm(result ~ elders + as.factor(team), data=databottom)
+
+
+robust_se8 <- sqrt(diag(vcovHC(reg8, type = "HC3")))
+
+stargazer(reg7, reg8, se = list(robust_se7, robust_se8), keep.stat = c("n", "rsq"), 
+          covariate.labels = c("Elder Taken"),
+          dep.var.labels = c("Top 5 (left) VS Bottom 5 (right) NALCS Teams"),
+          title = "Table 5: Comparison of Elder Effects on Win Chance from Top VS Bottom NALCS Teams", 
+          type = "html", omit = "team", style = "qje")
+
+
+```
+<br>
+
+# Conclusion
+
+
+Through this initial analysis of professional games, we have seen that some factors that seem to be correlated with winning more often are: being selected to play on blue side, taking baron instead of elder dragon, and destroying towers instead of going for kills. If these trends turned out to be accurate, we could take these ideas into our own League games to try and increase our own win rate. However, the results in Table 5 have shown that perhaps differences in skills can change the effects we see from regression analysis. I have only just begun to look at the multitude of conclusions that could be drawn. From this dataset alone there are dozens of more variables that could be even more important towards determining win rate. To take this further I would like to find data from non professional games of League and see how that effects the various factors I have tested in this post. There will always be more analysis to do, but if you want to increase your win rate for now maybe you should try to take that tower instead of going for the flashy outplay to kill your opponent. Thank you for reading, and I'll see you in game.
+
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE} 
+#Create dataset with cumulative win rate for team 
+#dataWR <- data %>%
+  # arrange(date) %>%
+   #group_by(team) %>%
+#  summarise(
+#    WR = cumsum(result)
+ # )
+
+
+#datatop5 <- datatop5 %>%
+ # summarize(m = mean(teamdeaths))
+
+#databottom <- databottom %>%
+ # summarize(m = mean(teamdeaths))
+
+#ggplot() +
+ # geom_point(data = datatop5, aes(x=towers, y=kills), color = "blue") +
+ # geom_point(data = databottom, aes(x=towers, y=kills)) +geom_line() +
+  #geom_line(method="smooth") + geom_line()
+
+
+```
+
+
+
+
+# Works Cited:
+
+Sevenhuysen, Tim. “Oracle's Elixir - Lol Esports Stats.” Oracle's Elixir - LoL Esports Stats, https://oracleselixir.com/tools/downloads. 
+
+Qureshi, Talha. “Warding in League of Legends.” Gaming Verdict - Gaming News, Reviews, Tier Lists and Mods, 20 May 2021, https://www.gamingverdict.com/league-of-legends/guide/warding-in-league-of-legends/. 
+
+
+
+
+
+
+
