@@ -1,0 +1,294 @@
+---
+title: "What's up with regression?"
+author: Prof. Jonathan Davis
+date: "Due by Friday, October 22nd at Noon"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+
+In the first two questions of this homework, we will once again analyaze data from the National Longitudinal Survey of Youth 1979 to measure the correlation between income and years of education.
+
+The data file `nlsy79.csv` includes this information and some additional variables we may use later in the course. A description of the variables in the data is in the table below.
+
+--------------------------------------------------------------------------------
+ Name                 Description
+ -------------------- ----------------------------------------------------------
+ `CASEID`               Unique identifier
+
+ `earn2009`               Earnings in 2009
+
+ `hgc`                 Years of education
+
+ `race`                Race and Ethnicity
+
+ `sex`                Gender
+
+ `bmonth`              Birth Month
+
+ `byear`               Birth Year
+
+ `afqt`               Armed Forces Qualifying Test Percentile
+
+ `region_1979`               Region
+
+ `faminc1978`              Family Income in 1978
+
+ `nsibs79`               Number of Siblings
+
+
+
+ --------------------------------------------------------------------------------
+ 
+# 1. The Shape of the Returns to Schooling 
+ 
+ a. Regress earnings on years of education. How much do earnings increase on average for every additional year of schooling?
+ 
+```{r}
+library("tidyverse")
+library("broom")
+library("stargazer")
+setwd('C:/Users/campb/OneDrive/econometrics/hw3')
+nlsy79 <- read_csv('nlsy79.csv')
+
+fel1 <- lm(earn2009 ~ hgc, data = nlsy79)
+fel1
+tidy(fel1)
+#earnings increase by9949 for every extra year of #school 
+```
+ 
+ 
+ b. Use ggplot2 to plot the conditional expectation of earnings with respect to years of education? Do you think it is reasonable to assume earnings increase linearly with years of schooling?
+```{r}
+ggplot(nlsy79, aes(x = hgc, y = earn2009)) +
+  geom_point(stat = "summary", fun = "mean") +
+  xlab("Years of Education") + ylab("Earnings") +
+  geom_smooth(se = FALSE)
+
+#Assuming earnings increase with years of school #seems reasonable after 12 years of school
+
+
+```
+ 
+ 
+ c. Generate a variable that equals years of education squared. Regress earnings on years of education and years of education squared. How much do earnings increase for someone who gets 10 instead of 9 years of schooling? What about someone who gets 17 instead of 16
+```{r}
+nlsy79 <- mutate(nlsy79, hgcsq  = (hgc*hgc))
+  
+reg1 <- lm(earn2009 ~ hgc + hgcsq, data = nlsy79)
+reg1
+
+#for 10 yrs over 9 yrs there is a $3,950 diff
+#for 17 yrs over 16 yrs there is a $14,016 diff
+
+tidy(reg1)
+summary(reg1)
+
+stargazer(reg1, keep.stat = c("n", "rsq"), covariate.labels = "earnings", dep.var.labels = "earnings", type = 'text')
+
+```
+ 
+ d. Code years of education as a factor. Now regress earnings on years of education. Comment on the results.
+```{r}
+
+#hgcf the factor of hgc
+nlsy79 <- nlsy79 %>% mutate(hgcf = factor(hgc))
+
+felshy <- lm(earn2009 ~ hgcf, data = nlsy79)
+tidy(felshy)
+
+stargazer(felshy, keep.stat = c("n", "rsq"), covariate.labels = "years of school", dep.var.labels = "earnings", type = 'text')
+
+#the effect on earnings based on years of school
+#definitely increases as years increase.
+
+#the 'slope' of 1 and 5 years of school is the #negative of the intercept.
+
+#the std error starts out large and gets smaller
+#near the middle and starts growing at the end
+
+```
+ 
+ 
+ e. Do your answers to this question make you more or less worried about the linearity of linear regression?
+
+	The linearity of linear regression assumes the relationship between x and the mean of y is linear. The data seems to be linear and the standard error gets smaller in the middle years showing that it is a more representative sample of the overall population. 
+
+
+
+# 2. Indicators and Interactions
+
+a. Regress the natural logarithm of earnings on an indicator variable for being  male. How do the estimates relate to the average log earnings of men and women?
+
+```{r}
+table(nlsy79$sex)
+
+#make a log earn variable
+nlsy79 <- nlsy79 %>%
+  mutate(learn = ifelse(earn2009>0, log(earn2009), NA))
+
+#indicator variable for male and female
+nlsy79 <- nlsy79 %>% mutate(male = sex == "MALE")
+
+#regress log earn on male
+bymale <- lm(learn ~ male, data = nlsy79)
+bymale
+
+#table of results
+stargazer(bymale, keep.stat = c("n", "rsq"), covariate.labels = "Male", dep.var.labels = "Log Earnings", title = "Regression of log earnings on male", type = 'text')
+
+
+#average earnings of men
+nlsy79 %>% 
+  filter(sex == "MALE") %>% 
+  drop_na(learn) %>% 
+  summarize(avgM = mean(learn))
+
+#average earnings for female
+nlsy79 %>%
+  filter(sex == "FEMALE") %>%
+  drop_na(learn) %>%
+  summarize(avgF = mean(learn))
+
+#The avg earnings of men is 10.848 
+#The avg earnings of women is 10.326
+
+#the difference in these values is equal to the
+#coefficient in the regression .522
+
+#the increase in earn for being a male is .522
+
+
+```
+
+
+
+b. Regress log earnings on years of education and an indicator for being male.  Next, regress log earnings on years of education and an indicator for being female. Compare the estimated returns to education from both specifications. What do you notice?
+
+```{r}
+#regress logearn on years school ANd male
+nlsy79 <- nlsy79 %>%
+mutate(male = sex == "MALE")
+reg2 <- lm(learn ~ hgc + male, data = nlsy79)
+
+tidy(reg2)
+
+
+#regress learn on hgc and female
+nlsy79 <- nlsy79 %>%
+  mutate(female = sex == "FEMALE")
+reg3 <- lm(learn ~ hgc + female, data=nlsy79)
+
+tidy(reg3)
+
+
+#The estimated returns of education is .144 for each and the estimated
+#returns of being male are .533 while female is the negative of that 
+# at -.533
+
+
+
+```
+
+
+
+c. Regress log earnings on years of education separately for the samples of men and women. Compare these estimates to what you found in part a of this question. 
+```{r}
+
+nlsy79m <- nlsy79 %>%
+filter(male == 1)
+
+regm <- lm(learn ~ hgc, data = nlsy79m)
+tidy(regm)
+
+
+#dataset female
+nlsy79f <- nlsy79 %>%
+  filter(male == 0)
+
+regf <- lm(learn ~ hgc, data = nlsy79f)
+
+tidy(regf)
+
+
+
+#Using a sample of only the males results in a return in another year of schooling of .161 which is much lower than the .522 found in part A.
+# For females this effect was seen even more as the returns to another
+# year of schooling are .124.
+# The results are smaller than a since we are looking at essential half 
+# of the population for each regression here.
+```
+
+
+d. Generate the interaction between years of education and indicators for being a man and woman. Regress log earnings on  years of education, the interaction between years of education and the indicator for being a woman, and the indicator for being a woman. How do these estimates relate to what you found in part c?
+
+```{r}
+
+#create interaction betwwen hcgmale and hgcfemale
+nlsy79 <- nlsy79 %>%
+  mutate(hgc_male = hgc * male, hgc_female = hgc * female)
+
+#regress learn on hgc and the two interactions
+schoolingBySex <- lm(learn ~ hgc + hgc_female + female, data = nlsy79)
+
+tidy(schoolingBySex)
+
+# These results show that the return of another year of school is
+# .161, the return of schoolwhile being a woman is -.036, and the 
+# return of being a female is -.042.
+# The return of another year of school minus the interaction
+# of school and being a woman is the same as the return of schooling
+# calculated in part c.
+
+```
+
+
+e. Now, also generate a variable equal to the interaction between years of education and an indicator for being a man. Regress log earnings on years of education interacted with being a man and a woman (both interactions, but not years of education alone) and an indicator for being a woman. How do these estimates relate to what you found in part c?
+
+```{r}
+
+#variable of interaction for hgc and indicator for man
+
+#trying to make the indicator 
+nlsy79 <- nlsy79 %>%
+  mutate(hgc_male = hgc * male, hgc_female = hgc * female)
+
+
+#regress learn on hgc(interacted with man), hgc(interacted with woman), & indicator for woman
+reg5 <- lm(learn ~ hgc_male + hgc_female + female, data= nlsy79) 
+tidy(reg5)
+
+#The results for the slope of male and female ran like this
+# are the same as the slopes found for them in their own sample.
+
+```
+
+
+# 3. In a 2004 Nature article (one of the leading scientific publications), Tatem, Guerra, Atkinson, and Hay predict that women will have faster times than men in the Olympic 100 meter dash by the year 2156. This one page article is posted on Canvas.
+
+a. How do the authors come to their conclusion?
+
+They reached their conclusion by plotting the winning times of men and women finals over the past 100 years against the competition date.
+
+
+b. What assumption do they make about the rate at which men's and women's times will improve? (Hint: Are they improving faster or slower over time?) Is this reasonable?
+
+The womens times are improving more as they have a plus or minus of ,232 seconds while the men only have .144. So the womens time difference each year could be much lower or much higher while the mens is a bit more consistent.
+
+
+c. Based on their model, about how fast will men and women run the 100 meter dash in the year 2600?
+
+On their model womens time will decrease by 2.491 seconds in the 148 years it takes to go from 2008 to 2156. To go another 444 years to 2600, at the same rate, the model would predict women to run a time of .606. Mens expected time in 2600 is 3.202.
+
+
+# 4. Blog post brainstorm
+
+a. What is a topic you are interested in?
+
+League of Legends
+
+
+b. Google that topic and "data". What do you find?
+
+data for champion win rates, pro player salary and team win rates.

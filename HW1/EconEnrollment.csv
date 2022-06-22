@@ -1,0 +1,841 @@
+Term,coursenumber,coursename,instructor,enrollment,level
+202001,101,Contemporary Economic Issues,"Urbancic, Mike",,0
+202001,201,Intro to Econ Analysis: Micro,"Stanford, Garrett",,0
+202001,201,Intro to Econ Analysis: Micro,"Waddell, Glen",,0
+202001,201,Intro to Econ Analysis: Micro,"Mitchell-Nelson, Joseph",,0
+202001,201,Intro to Econ Analysis: Micro,"Ivanauskas, Terry",,0
+202001,202,Intro to Econ Analysis: Macro,"Thompson, Jacob Jake",,0
+202001,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",,0
+202001,202,Intro to Econ Analysis: Macro,"Kopriva, Mary",,0
+202001,311,Inter Micro Theory,"Wong, Woan Foong",,1
+202001,311,Inter Micro Theory,"Burlando, Alfredo",,1
+202001,311,Inter Micro Theory,"Putz, Jenni",,1
+202001,311,Inter Micro Theory,"Kuhn, Mike",,1
+202001,313,Inter Macro Theory,"Briar, Cory",,1
+202001,313,Inter Macro Theory,"Li, Jungang Alex",,1
+202001,313,Inter Macro Theory,"Thoma, Mark",,1
+202001,320,Intro to Econometrics,"Javed, Amna",,1
+202001,320,Intro to Econometrics,"Thoma, Mark",,1
+202001,327,Intro to Game Theory,"Huang, Hanyuan Harrison",,1
+202001,327,Intro to Game Theory,"Holdahl, Ethan",,1
+202001,333,Resource and Env Econ Issues,"Zhang, Shan",,1
+202001,350,Labor Market Issues,"McDonough, Robert",,1
+202001,360,Issues in IO,"Garcia, Brett",,1
+202001,370,Money and Banking,"Stockwell, Thomas",,1
+202001,390,Probs/Issues in Dev Econ,"Gupta, Saurabh",,1
+202001,399,Health Econ,"Ivanauskas, Terry",,1
+202001,411,Advanced Micro Theory,"van den Nouweland, Anne",,2
+202001,413,Advanced Macro Theory,"McGough, Bruce",,2
+202001,421,Intro to Econometrics,"Etcheverry, Luciana",,1
+202001,423,Econometrics,"Davis, Jon",,2
+202001,427,Games and Decisions,"van den Nouweland, Anne",,2
+202001,428,Behav and Exp Econ,"Harbaugh, Bill",,2
+202001,430,Urban and Regional,"Colas, Mark",,2
+202001,435,Natural Resource Econ,"Cameron, Trudy",,2
+202001,440,Public Econ,"Ellis, Chris",,2
+202001,448,Political Economy,"Ellis, Chris",,2
+202001,471,Monetary Theory,"Duy, Tim",,2
+202001,481,Intl Trade,"Wong, Woan Foong",,2
+202001,491,Issues Growth and Development.,"Chakraborty, Shankha",,2
+202001,607,Core Micro,"Kolpin, Van",,3
+202001,607,Core Macro,"McGough, Bruce",,3
+202001,607,Core Econometrics (PhD),"Kolpin, Van",,3
+202001,607,Time Series,"Piger, Jeremy",,3
+202001,607,Labor/Urban,"Colas, Mark",,3
+202001,607,Development,"Burlando, Alfredo",,3
+202001,607,Macro Field,"Evans, George",,3
+202001,607,Applied Behavioral Economics,"Kuhn, Mike",,3
+201903,201,Intro to Econ Analysis: Micro,"Lennon, Connor",74,0
+201903,201,Intro to Econ Analysis: Micro,"Mitchell-Nelson, Joseph",119,0
+201903,201,Intro to Econ Analysis: Micro,"Miller, Keaton",158,0
+201903,201,Intro to Econ Analysis: Micro,"Allen, Jeffrey",69,0
+201903,202,Intro to Econ Analysis: Macro,"Stockwell, Thomas",298,0
+201903,202,Intro to Econ Analysis: Macro,"Gupta, Saurabh",299,0
+201903,202,Intro to Econ Analysis: Macro,"Kopriva, Mary",127,0
+201903,311,Inter Micro Theory,"Dlouhy, Curtis",85,1
+201903,311,Inter Micro Theory,"Houghton, Kendall",56,1
+201903,311,Inter Micro Theory,"Zou, Eric",36,1
+201903,311,Inter Micro Theory,"Miromanova, Anna",85,1
+201903,311,Inter Micro Theory,"Kuhn, Mike",83,1
+201903,313,Inter Macro Theory,"Briar, Cory",60,1
+201903,313,Inter Macro Theory,"Lester, Chandler",67,1
+201903,313,Inter Macro Theory,"Thoma, Mark",57,1
+201903,320,Intro to Econometrics,"Ait Benasser, Youssef",56,1
+201903,320,Intro to Econometrics,"Thoma, Mark",24,1
+201903,327,Intro to Game Theory,"Urbancic, Mike",80,1
+201903,330,Urban and Regional,"Urbancic, Mike",81,1
+201903,333,Resource and Env Econ Issues,"Putz, Jenni",81,1
+201903,340,Issues in Public Econ,"Mindock, Maxwell",66,1
+201903,350,Labor Market Issues,"Etcheverry, Luciana",80,1
+201903,360,Issues in IO,"Garcia, Brett",36,1
+201903,370,Money and Banking,"Li, Xiang (Ivy)",86,1
+201903,399,Health Econ,"Ivanauskas, Terry",15,1
+201903,399,Sustainability Economics,"Doering, Ralph",19,1
+201903,410,Big Data,"McDermott, Grant",23,2
+201903,410,Crime Economics,"Hansen, Ben",83,2
+201903,419,Econ Analysis of Community Issue,"Harbaugh, Bill",17,1
+201903,421,Intro to Econometrics,"Rubin, Ed",115,1
+201903,425,Econometrics III,"Zou, Eric",18,2
+201903,427,Games and Decisions,"Wu, Jiabin",83,2
+201903,443,Health Econ,"Hansen, Ben",85,2
+201903,451,Issues in Labor Economics,"Kuhn, Mike",90,2
+201903,460,Theory of IO,"Miller, Keaton",80,2
+201903,462,Transportation,"Wilson, Wes",52,2
+201903,607,Core Micro,"Wu, Jiabin",16,3
+201903,607,Core Macro,"McGough, Bruce",12,3
+201903,607,Core Econometrics (PhD),"Rubin, Ed",16,3
+201903,607,Environmental,"Cameron, Trudy",7,3
+201903,607,Experimental Econ,"Davis, Jon",13,3
+201903,607,Industrial Organizations,"Wilson, Wes",6,3
+201903,607,Macro Field,"McGough, Bruce",10,3
+201902,201,Intro to Econ Analysis: Micro,"Raze, Kyle",153,0
+201902,201,Intro to Econ Analysis: Micro,"Miller, Keaton",304,0
+201902,201,Intro to Econ Analysis: Micro,"Waddell, Glen",278,0
+201902,201,Intro to Econ Analysis: Micro,"Kiefer, Zachary",122,0
+201902,201,Intro to Econ Analysis: Micro,"Allen, Jeffrey",106,0
+201902,202,Intro to Econ Analysis: Macro,"Wilson, Melissa",117,0
+201902,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",195,0
+201902,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",83,0
+201902,202,Intro to Econ Analysis: Macro,"Kopriva, Mary",100,0
+201902,311,Inter Micro Theory,"van den Nouweland, Anne",24,1
+201902,311,Inter Micro Theory,"van den Nouweland, Anne",81,1
+201902,311,Inter Micro Theory,"Kolpin, Van",85,1
+201902,311,Inter Micro Theory,"Zou, Eric",38,1
+201902,313,Inter Macro Theory,"Li, Jungang Alex",43,1
+201902,313,Inter Macro Theory,"Evans, David",63,1
+201902,313,Inter Macro Theory,"Evans, David",56,1
+201902,313,Inter Macro Theory,"Thoma, Mark",49,1
+201902,320,Intro to Econometrics,"Javed, Amna",57,1
+201902,320,Intro to Econometrics,"Thoma, Mark",50,1
+201902,327,Intro to Game Theory,"Ellis, Chris",81,1
+201902,330,Urban and Regional,"Morehouse, John",80,1
+201902,340,Issues in Public Econ,"Thompson, Jacob Jake",58,1
+201902,350,Labor Market Issues,"Huang, Hanyuan Harrison",79,1
+201902,360,Issues in IO,"Garcia, Brett",38,1
+201902,370,Money and Banking,"Stockwell, Thomas",78,1
+201902,410,EC Policy Analysis,"Kolpin, Van",18,2
+201902,418,Econ Analysis of Community Issue,"Harbaugh, Bill",17,1
+201902,421,Intro to Econometrics,"Rubin, Ed",78,1
+201902,422,Forecasting,"Duy, Tim",27,1
+201902,424,Econometrics II,"Rubin, Ed",24,2
+201902,430,Urban and Regional,"Colas, Mark",80,2
+201902,435,Natural Resource Econ,"Cameron, Trudy",40,2
+201902,440,Public Econ,"Ellis, Chris",56,2
+201902,460,Theory of IO,"Miller, Keaton",27,2
+201902,480,Intl Finance,"Chakraborty, Shankha",56,2
+201902,481,Intl Trade,"Wong, Woan Foong",28,2
+201902,482,Globalization,"Cristea, Anca",73,2
+201902,484,Multinational Corporations,"Cristea, Anca",78,2
+201902,607,Core Micro,"Colas, Mark",18,3
+201902,607,Core Macro,"Evans, George",14,3
+201902,607,Core Econometrics (PhD),"Evans, George",17,3
+201902,607,Micro Econometrics,"Hansen, Ben",14,3
+201902,607,Labor/Urban,"Waddell, Glen",9,3
+201902,607,International,"Wong, Woan Foong",5,3
+201902,607,Environmental,"McDermott, Grant",13,3
+201901,101,Contemporary Economic Issues,"Urbancic, Mike",292,0
+201901,201,Intro to Econ Analysis: Micro,"Mitchell-Nelson, Joseph",119,0
+201901,201,Intro to Econ Analysis: Micro,"Waddell, Glen",199,0
+201901,201,Intro to Econ Analysis: Micro,"Wilson, Melissa",70,0
+201901,201,Intro to Econ Analysis: Micro,"Ivanauskas, Terry",19,0
+201901,201,Intro to Econ Analysis: Micro,"Allen, Jeffrey",99,0
+201901,202,Intro to Econ Analysis: Macro,"Lester, Chandler",108,0
+201901,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",184,0
+201901,202,Intro to Econ Analysis: Macro,"Allen, Jeffrey",82,0
+201901,311,Inter Micro Theory,"Wong, Woan Foong",72,1
+201901,311,Inter Micro Theory,"Kuhn, Mike",76,1
+201901,311,Inter Micro Theory,"Miromanova, Anna",27,1
+201901,311,Inter Micro Theory,"Davis, Jon",75,1
+201901,311,Inter Micro Theory,"Houghton, Kendall",37,1
+201901,313,Inter Macro Theory,"Duong, Hoa",43,1
+201901,313,Inter Macro Theory,"Evans, George",75,1
+201901,313,Inter Macro Theory,"Evans, George",37,1
+201901,313,Inter Macro Theory,"Thoma, Mark",67,1
+201901,320,Intro to Econometrics,"Raze, Kyle",57,1
+201901,320,Intro to Econometrics,"Thoma, Mark",66,1
+201901,327,Intro to Game Theory,"Kiefer, Zachary",81,1
+201901,330,Urban and Regional,"Jiang, Sichao",67,1
+201901,333,Resource and Env Econ Issues,"Doering, Ralph",70,1
+201901,340,Issues in Public Econ,"Khalid, Ayesha",69,1
+201901,360,Issues in IO,"Dlouhy, Curtis",32,1
+201901,370,Money and Banking,"Li, Xiang (Ivy)",79,1
+201901,380,Intl Econ Issues,"Mindock, Maxwell",59,1
+201901,410,Econ Prob PNW Cities,"Whitelaw, Ed",13,2
+201901,411,Advanced Micro Theory,"van den Nouweland, Anne",25,2
+201901,413,Advanced Macro Theory,"McGough, Bruce",20,2
+201901,421,Intro to Econometrics,"Etcheverry, Luciana",88,1
+201901,423,Econometrics,"Davis, Jon",25,2
+201901,430,Urban and Regional,"Colas, Mark",68,2
+201901,435,Natural Resource Econ,"Cameron, Trudy",21,2
+201901,448,Political Economy,"Ellis, Chris",33,2
+201901,451,Issues in Labor Economics,"Kuhn, Mike",70,2
+201901,460,Theory of IO,"Waddell, Glen",20,2
+201901,471,Monetary Theory,"Duy, Tim",57,2
+201901,481,Intl Trade,"Wong, Woan Foong",33,2
+201901,482,Globalization,"Cristea, Anca",69,2
+201901,490,Econ Growth and Development,"Javed, Amna",22,2
+201901,607,Core Micro,"Kolpin, Van",19,3
+201901,607,Core Macro,"Chakraborty, Shankha",15,3
+201901,607,Time Series,"Piger, Jeremy",17,3
+201901,607,Game Theory,"van den Nouweland, Anne",6,3
+201901,607,Macro Field,"Chakraborty, Shankha",9,3
+201901,607,Labor/Urban,"Colas, Mark",10,3
+201901,607,International,"Cristea, Anca",7,3
+201901,607,Core Econometrics (PhD),"Kolpin, Van",17,3
+201803,201,Intro to Econ Analysis: Micro,"Miller, Keaton",171,0
+201803,201,Intro to Econ Analysis: Micro,"Wilson, Kyle",172,0
+201803,201,Intro to Econ Analysis: Micro,"Wheeler, William",120,0
+201803,201,Intro to Econ Analysis: Micro,"Allen, Jeffrey",85,0
+201803,202,Intro to Econ Analysis: Macro,"Khalid, Ayesha",80,0
+201803,202,Intro to Econ Analysis: Macro,"Wilson, Melissa",222,0
+201803,202,Intro to Econ Analysis: Macro,"Allen, Jeffrey",85,0
+201803,311,Inter Micro Theory,"McDermott, Grant",85,1
+201803,311,Inter Micro Theory,"Biemiller, Nathan",31,1
+201803,311,Inter Micro Theory,"Mitchell-Nelson, Joseph",75,1
+201803,311,Inter Micro Theory,"McNichols, Drew",75,1
+201803,311,Inter Micro Theory,"Minard, Simeon",63,1
+201803,313,Inter Macro Theory,"Li, Jungang Alex",42,1
+201803,313,Inter Macro Theory,"Duong, Hoa",84,1
+201803,313,Inter Macro Theory,"Wood, Nicholas",87,1
+201803,320,Intro to Econometrics,"Piger, Jeremy",93,1
+201803,327,Intro to Game Theory,"Urbancic, Mike",95,1
+201803,330,Urban and Regional,"Urbancic, Mike",90,1
+201803,333,Resource and Env Econ Issues,"Walch, Ryan",73,1
+201803,340,Issues in Public Econ,"Houghton, Kendall",70,1
+201803,350,Labor Market Issues,"Etcheverry, Luciana",78,1
+201803,360,Issues in IO,"Garcia, Brett",37,1
+201803,380,Intl Econ Issues,"Mindock, Maxwell",59,1
+201803,399,Health Econ,"Ivanauskas, Terry",10,1
+201803,410,"Computational Eocnomics, EC Policy Analysis","Evans, David",50,2
+201803,419,Econ Analysis of Community Issue,"Harbaugh, Bill",8,1
+201803,421,Intro to Econometrics,"Rubin, Ed",101,1
+201803,425,Econometrics III,"Rubin, Ed",25,2
+201803,432,Economy of PNW,"Whitelaw, Ed",36,2
+201803,434,Environmental Econ,"McDermott, Grant",80,2
+201803,435,Natural Resource Econ,"Cameron, Trudy",41,2
+201803,441,Public Econ: Taxation,"Imboden, Christian",58,2
+201803,451,Issues in Labor Economics,"Kuhn, Mike",89,2
+201803,460,Theory of IO,"Miller, Keaton",81,2
+201803,462,Transportation,"Wilson, Wes",37,2
+201803,491,Issues Growth and Development.,"Kopriva, Mary",80,2
+201803,607,"Applied Behavioral Economics, Applied Behavioral Economics","Kuhn, Mike",10,3
+201803,607,Core Macro,"Evans, David",16,3
+201803,607,Core Micro,"Kolpin, Van",19,3
+201803,607,Environmental,"Cameron, Trudy",8,3
+201803,607,Health/Crime,"Hansen, Ben",8,3
+201803,607,International,"Cristea, Anca",4,3
+201803,607,Industrial Organizations,"Wilson, Wes",4,3
+201803,202,Intro to Econ Analysis: Macro,"Piger, Jeremy",301,0
+201802,201,Intro to Econ Analysis: Micro,"Miller, Keaton",339,0
+201802,201,Intro to Econ Analysis: Micro,"Raze, Kyle",339,0
+201802,201,Intro to Econ Analysis: Micro,"Ivanauskas, Terry",84,0
+201802,201,Intro to Econ Analysis: Micro,"Ivanauskas, Terry",90,0
+201802,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",144,0
+201802,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",259,0
+201802,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",270,0
+201802,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",109,0
+201802,311,Inter Micro Theory,"Wong, Woan Foong",66,1
+201802,311,Inter Micro Theory,"Burlando, Alfredo",85,1
+201802,311,Inter Micro Theory,"Burlando, Alfredo",85,1
+201802,311,Inter Micro Theory,"Dlouhy, Curtis",49,1
+201802,311,Inter Micro Theory,"van den Nouweland, Anne",11,1
+201802,313,Inter Macro Theory,"Evans, David",31,1
+201802,313,Inter Macro Theory,"Evans, David",95,1
+201802,313,Inter Macro Theory,"Miromanova, Anna",81,1
+201802,320,Intro to Econometrics,"Piger, Jeremy",68,1
+201802,320,Intro to Econometrics,"Thoma, Mark",72,1
+201802,327,Intro to Game Theory,"Ellis, Chris",86,1
+201802,333,Resource and Env Econ Issues,"Javed, Amna",59,1
+201802,340,Issues in Public Econ,"Khalid, Ayesha",73,1
+201802,370,Money and Banking,"Li, Xiang (Ivy)",85,1
+201802,380,Intl Econ Issues,"Sytsma, Tobias",99,1
+201802,399,Behavioral Econ,"Wu, Jiabin",76,1
+201802,410,Crime Economics,"Hansen, Ben",84,2
+201802,413,Advanced Macro Theory,"McGough, Bruce",5,2
+201802,418,Econ Analysis of Community Issue,"Harbaugh, Bill",8,1
+201802,421,Intro to Econometrics,"Rubin, Ed",85,1
+201802,422,Forecasting,"Duy, Tim",45,1
+201802,424,Econometrics II,"Evans, George",28,2
+201802,427,Games and Decisions,"Wu, Jiabin",73,2
+201802,428,Behav and Exp Econ,"Davis, Jon",80,2
+201802,430,Urban and Regional,"Colas, Mark",39,2
+201802,434,Environmental Econ,"McDermott, Grant",46,2
+201802,440,Public Econ,"Ellis, Chris",41,2
+201802,443,Health Econ,"Hansen, Ben",76,2
+201802,450,Labor Economics,"Waddell, Glen",71,2
+201802,480,Intl Finance,"Chakraborty, Shankha",58,2
+201802,481,Intl Trade,"Wong, Woan Foong",23,2
+201802,607,"Applied Behavioral Economics, Applied Behavioral Economics","Davis, Jon",4,3
+201802,607,Core Macro,"Evans, George",16,3
+201802,607,Core Micro,"van den Nouweland, Anne",19,3
+201802,607,Environmental,"McDermott, Grant",10,3
+201802,607,Industrial Organizations,"Miller, Keaton",10,3
+201802,607,Micro Econometrics,"Waddell, Glen",14,3
+201802,607,Monetary Theory,"Thoma, Mark",6,3
+201801,101,Contemporary Economic Issues,"Urbancic, Mike",304,0
+201801,201,Intro to Econ Analysis: Micro,"Waddell, Glen",196,0
+201801,201,Intro to Econ Analysis: Micro,"McNichols, Drew",96,0
+201801,201,Intro to Econ Analysis: Micro,"Minard, Simeon",159,0
+201801,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",73,0
+201801,202,Intro to Econ Analysis: Macro,"Stockwell, Thomas",220,0
+201801,202,Intro to Econ Analysis: Macro,"Wood, Nicholas",62,0
+201801,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",76,0
+201801,311,Inter Micro Theory,"Burlando, Alfredo",80,1
+201801,311,Inter Micro Theory,"Davis, Jon",83,1
+201801,311,Inter Micro Theory,"van den Nouweland, Anne",25,1
+201801,311,Inter Micro Theory,"Kuhn, Mike",85,1
+201801,311,Inter Micro Theory,"Davis, Jon",74,1
+201801,313,Inter Macro Theory,"Evans, George",39,1
+201801,313,Inter Macro Theory,"Miromanova, Anna",13,1
+201801,313,Inter Macro Theory,"Lester, Chandler",84,1
+201801,313,Inter Macro Theory,"Thoma, Mark",78,1
+201801,320,Intro to Econometrics,"Sytsma, Tobias",65,1
+201801,320,Intro to Econometrics,"Thoma, Mark",75,1
+201801,327,Intro to Game Theory,"Kiefer, Zachary",79,1
+201801,330,Urban and Regional,"Imboden, Christian",78,1
+201801,333,Resource and Env Econ Issues,"Walch, Ryan",59,1
+201801,340,Issues in Public Econ,"Mindock, Maxwell",20,1
+201801,350,Labor Market Issues,"Biemiller, Nathan",80,1
+201801,360,Issues in IO,"Dlouhy, Curtis",28,1
+201801,370,Money and Banking,"Duong, Hoa",79,1
+201801,390,Probs/Issues in Dev Econ,"Wilson, Kyle",71,1
+201801,410,Econ Prob PNW Cities,"Whitelaw, Ed",27,2
+201801,411,Advanced Micro Theory,"Wu, Jiabin",14,2
+201801,421,Intro to Econometrics,"Wheeler, William",98,1
+201801,423,Econometrics,"Kolpin, Van",31,2
+201801,427,Games and Decisions,"van den Nouweland, Anne",25,2
+201801,430,Urban and Regional,"Colas, Mark",71,2
+201801,435,Natural Resource Econ,"Cameron, Trudy",40,2
+201801,440,Public Econ,"Ellis, Chris",29,2
+201801,448,Political Economy,"Ellis, Chris",28,2
+201801,450,Labor Economics,"Waddell, Glen",80,2
+201801,451,Issues in Labor Economics,"Kuhn, Mike",79,2
+201801,471,Monetary Theory,"Duy, Tim",45,2
+201801,480,Intl Finance,"Chakraborty, Shankha",53,2
+201801,481,Intl Trade,"Wong, Woan Foong",37,2
+201801,490,Econ Growth and Development,"Burlando, Alfredo",40,2
+201801,607,Core Macro,"Chakraborty, Shankha",16,3
+201801,607,Core Micro,"Wu, Jiabin",19,3
+201801,607,Game Theory,"Kolpin, Van",12,3
+201801,607,International,"Wong, Woan Foong",4,3
+201801,607,Labor/Urban,"Colas, Mark",14,3
+201801,607,Macro Field,"Evans, George",9,3
+201801,607,Time Series,"Piger, Jeremy",18,3
+201703,201,Intro to Econ Analysis: Micro,"Mindock, Maxwell",153,0
+201703,201,Intro to Econ Analysis: Micro,"Miller, Keaton",321,0
+201703,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",118,0
+201703,202,Intro to Econ Analysis: Macro,"Hunt, Erin",259,0
+201703,202,Intro to Econ Analysis: Macro,"Khalid, Ayesha",317,0
+201703,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",121,0
+201703,311,Inter Micro Theory,"Wilson, Kyle",90,1
+201703,311,Inter Micro Theory,"McNichols, Drew",81,1
+201703,311,Inter Micro Theory,"Kuhn, Mike",115,1
+201703,311,Inter Micro Theory,"Biemiller, Nathan",58,1
+201703,313,Inter Macro Theory,"Houghton, Kendall",88,1
+201703,313,Inter Macro Theory,"Nighswander, Tristan",90,1
+201703,313,Inter Macro Theory,"Wheeler, William",35,1
+201703,313,Inter Macro Theory,"Thoma, Mark",95,1
+201703,320,Intro to Econometrics,"Piger, Jeremy",123,1
+201703,327,Intro to Game Theory,"Urbancic, Mike",113,1
+201703,330,Urban and Regional,"Urbancic, Mike",101,1
+201703,333,Resource and Env Econ Issues,"Mueller (Scawinski), Rosie",69,1
+201703,340,Issues in Public Econ,"Brennan, Benjamin",26,1
+201703,350,Labor Market Issues,"Rashid, Amani",90,1
+201703,370,Money and Banking,"Walch, Ryan",50,1
+201703,380,Intl Econ Issues,"Haynes, Stephen",90,1
+201703,399,Behavioral Econ,"Wu, Jiabin",87,1
+201703,410,Crime Economics,"Hansen, Ben",86,2
+201703,419,Econ Analysis of Community Issue,"Harbaugh, Bill",15,1
+201703,421,Intro to Econometrics,"Weber, Caroline",81,1
+201703,421,Intro to Econometrics,"Thoma, Mark",100,1
+201703,425,Econometrics III,"Cameron, Trudy",23,2
+201703,427,Games and Decisions,"Wu, Jiabin",79,2
+201703,428,Behav and Exp Econ,"Harbaugh, Bill",58,2
+201703,432,Economy of PNW,"Whitelaw, Ed",32,2
+201703,434,Environmental Econ,"McDermott, Grant",27,2
+201703,443,Health Econ,"Hansen, Ben",77,2
+201703,450,Labor Economics,"Adams, Nathan",76,2
+201703,451,Issues in Labor Economics,"Kuhn, Mike",47,2
+201703,460,Theory of IO,"Miller, Keaton",19,2
+201703,470,Monetary Policy,"Falconer, Jean",58,2
+201703,480,Intl Finance,"McClung, Nigel",78,2
+201703,490,Econ Growth and Development,"Burlando, Alfredo",65,2
+201703,607,Bayesian Economtrics,"Piger, Jeremy",14,3
+201703,607,Core Macro,"McGough, Bruce",16,3
+201703,607,Core Micro,"Kolpin, Van",21,3
+201703,607,Development,"Burlando, Alfredo",8,3
+201703,607,Environmental,"McDermott, Grant",13,3
+201703,607,Public,"Weber, Caroline",12,3
+201702,201,Intro to Econ Analysis: Micro,"McNichols, Drew",347,0
+201702,201,Intro to Econ Analysis: Micro,"Mindock, Maxwell",328,0
+201702,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",159,0
+201702,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",298,0
+201702,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",323,0
+201702,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",100,0
+201702,311,Inter Micro Theory,"Khalid, Ayesha",97,1
+201702,311,Inter Micro Theory,"Dlouhy, Curtis",96,1
+201702,311,Inter Micro Theory,"Harbaugh, Bill",99,1
+201702,311,Inter Micro Theory,"Wilson, Kyle",81,1
+201702,313,Inter Macro Theory,"Miromanova, Anna",79,1
+201702,313,Inter Macro Theory,"Evans, David",96,1
+201702,313,Inter Macro Theory,"Thoma, Mark",95,1
+201702,320,Intro to Econometrics,"Minard, Simeon",86,1
+201702,320,Intro to Econometrics,"Thoma, Mark",71,1
+201702,327,Intro to Game Theory,"Ellis, Chris",100,1
+201702,340,Issues in Public Econ,"Biemiller, Nathan",56,1
+201702,350,Labor Market Issues,"Imboden, Christian",55,1
+201702,360,Issues in IO,"Walch, Ryan",87,1
+201702,370,Money and Banking,"Wood, Nicholas",80,1
+201702,380,Intl Econ Issues,"Haynes, Stephen",111,1
+201702,390,Probs/Issues in Dev Econ,"Sytsma, Tobias",88,1
+201702,413,Advanced Macro Theory,"McGough, Bruce",21,2
+201702,418,Econ Analysis of Community Issue,"Harbaugh, Bill",15,1
+201702,421,Intro to Econometrics,"Wheeler, William",126,1
+201702,422,Forecasting,"Duy, Tim",51,1
+201702,424,Econometrics II,"Evans, George",24,2
+201702,434,Environmental Econ,"McDermott, Grant",98,2
+201702,440,Public Econ,"Ellis, Chris",76,2
+201702,443,Health Econ,"Hansen, Ben",106,2
+201702,480,Intl Finance,"Chakraborty, Shankha",90,2
+201702,481,Intl Trade,"Wong, Woan Foong",65,2
+201702,607,Core Macro,"Chakraborty, Shankha",16,3
+201702,607,Core Micro,"van den Nouweland, Anne",19,3
+201702,607,Environmental,"Cameron, Trudy",6,3
+201702,607,Game Theory,"van den Nouweland, Anne",12,3
+201702,607,Labor/Urban,"Waddell, Glen",12,3
+201702,607,Macro Field,"Evans, David",7,3
+201702,607,Micro Econometrics,"Hansen, Ben",15,3
+201701,101,Contemporary Economic Issues,"Urbancic, Mike",239,0
+201701,201,Intro to Econ Analysis: Micro,"Miller, Keaton",261,0
+201701,201,Intro to Econ Analysis: Micro,"Minard, Simeon",250,0
+201701,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",117,0
+201701,202,Intro to Econ Analysis: Macro,"Falconer, Jean",188,0
+201701,202,Intro to Econ Analysis: Macro,"Hunt, Erin",249,0
+201701,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",116,0
+201701,311,Inter Micro Theory,"Jerman, Michael",94,1
+201701,311,Inter Micro Theory,"Burlando, Alfredo",109,1
+201701,311,Inter Micro Theory,"Kuhn, Mike",95,1
+201701,311,Inter Micro Theory,"Burlando, Alfredo",107,1
+201701,313,Inter Macro Theory,"Wood, Nicholas",38,1
+201701,313,Inter Macro Theory,"Evans, George",90,1
+201701,313,Inter Macro Theory,"Evans, George",70,1
+201701,313,Inter Macro Theory,"Thoma, Mark",87,1
+201701,320,Intro to Econometrics,"Adams, Nathan",87,1
+201701,320,Intro to Econometrics,"Thoma, Mark",78,1
+201701,330,Urban and Regional,"Imboden, Christian",64,1
+201701,333,Resource and Env Econ Issues,"Mueller (Scawinski), Rosie",88,1
+201701,340,Issues in Public Econ,"Brennan, Benjamin",15,1
+201701,350,Labor Market Issues,"Rashid, Amani",92,1
+201701,360,Issues in IO,"Dlouhy, Curtis",19,1
+201701,370,Money and Banking,"Duong, Hoa",92,1
+201701,380,Intl Econ Issues,"Nighswander, Tristan",60,1
+201701,380,Intl Econ Issues,"Haynes, Stephen",108,1
+201701,390,Probs/Issues in Dev Econ,"Sytsma, Tobias",32,1
+201701,411,Advanced Micro Theory,"Wu, Jiabin",14,2
+201701,421,Intro to Econometrics,"Wilson, Wes",92,1
+201701,423,Econometrics,"Kolpin, Van",23,2
+201701,435,Natural Resource Econ,"Cameron, Trudy",16,2
+201701,440,Public Econ,"Ellis, Chris",80,2
+201701,448,Political Economy,"Ellis, Chris",45,2
+201701,450,Labor Economics,"Waddell, Glen",63,2
+201701,451,Issues in Labor Economics,"Kuhn, Mike",80,2
+201701,460,Theory of IO,"Wilson, Wes",33,2
+201701,462,Transportation,"Wilson, Wes",16,2
+201701,471,Monetary Theory,"Duy, Tim",74,2
+201701,480,Intl Finance,"McClung, Nigel",94,2
+201701,481,Intl Trade,"Wong, Woan Foong",73,2
+201701,607,Core Macro,"Thoma, Mark",16,3
+201701,607,Core Micro,"Wu, Jiabin",19,3
+201701,607,International,"Wong, Woan Foong",8,3
+201701,607,Industrial Organizations,"Miller, Keaton",11,3
+201701,607,Macro Field,"Chakraborty, Shankha",17,3
+201701,607,Time Series,"Piger, Jeremy",20,3
+201603,201,Intro to Econ Analysis: Micro,"Miller, Keaton",318,0
+201603,201,Intro to Econ Analysis: Micro,"Miller, Keaton",282,0
+201603,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",97,0
+201603,202,Intro to Econ Analysis: Macro,"Piger, Jeremy",341,0
+201603,202,Intro to Econ Analysis: Macro,"Falconer, Jean",270,0
+201603,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",97,0
+201603,311,Inter Micro Theory,"Selby, Rebekah",89,1
+201603,311,Inter Micro Theory,"Kuhn, Mike",95,1
+201603,311,Inter Micro Theory,"Adams, Nathan",85,1
+201603,311,Inter Micro Theory,"Rashid, Amani",90,1
+201603,313,Inter Macro Theory,"Brennan, Benjamin",43,1
+201603,313,Inter Macro Theory,"Evans, David",86,1
+201603,313,Inter Macro Theory,"Nighswander, Tristan",90,1
+201603,313,Inter Macro Theory,"Thoma, Mark",91,1
+201603,320,Intro to Econometrics,"Piger, Jeremy",117,1
+201603,327,Intro to Game Theory,"Urbancic, Mike",100,1
+201603,330,Urban and Regional,"Urbancic, Mike",88,1
+201603,340,Issues in Public Econ,"Hunt, Erin",52,1
+201603,350,Labor Market Issues,"Nguyen, Tuan Anh",86,1
+201603,360,Issues in IO,"McKenzie, Taylor",88,1
+201603,370,Money and Banking,"Dombeck, Brian",88,1
+201603,380,Intl Econ Issues,"Friedt, Felix",39,1
+201603,380,Intl Econ Issues,"Haynes, Stephen",88,1
+201603,399,Behavioral Econ,"Wu, Jiabin",57,1
+201603,399,Inequality,"Jerman, Michael",45,1
+201603,410,Crime Economics,"Hansen, Ben",78,2
+201603,419,Econ Analysis of Community Issue,"Harbaugh, Bill",17,1
+201603,421,Intro to Econometrics,"Weber, Caroline",94,1
+201603,421,Intro to Econometrics,"Thoma, Mark",69,1
+201603,425,Econometrics III,"Cameron, Trudy",23,2
+201603,427,Games and Decisions,"Wu, Jiabin",74,2
+201603,428,Behav and Exp Econ,"Harbaugh, Bill",75,2
+201603,432,Economy of PNW,"Whitelaw, Ed",43,2
+201603,434,Environmental Econ,"Cil, Gulcan",43,2
+201603,450,Labor Economics,"Birk, Erica",60,2
+201603,460,Theory of IO,"Waddell, Glen",64,2
+201603,462,Transportation,"Wilson, Wes",70,2
+201603,470,Monetary Policy,"McClung, Nigel",67,2
+201603,493,History of Economic Thought,"Stageberg, Stephen",52,2
+201603,607,"Applied Behavioral Economics, Applied Behavioral Economics","Kuhn, Mike",9,3
+201603,607,Core Macro,"Evans, David",18,3
+201603,607,Core Micro,"Kolpin, Van",22,3
+201603,607,Industrial Organizations,"Wilson, Wes",3,3
+201603,607,Labor/Urban,"Waddell, Glen",9,3
+201603,607,Taxation,"Weber, Caroline",6,3
+201602,201,Intro to Econ Analysis: Micro,"Waddell, Glen",340,0
+201602,201,Intro to Econ Analysis: Micro,"Harbaugh, Bill",31,0
+201602,201,Intro to Econ Analysis: Micro,"Minard, Simeon",342,0
+201602,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",156,0
+201602,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",328,0
+201602,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",333,0
+201602,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",115,0
+201602,311,Inter Micro Theory,"McNichols, Drew",105,1
+201602,311,Inter Micro Theory,"Adams, Nathan",99,1
+201602,311,Inter Micro Theory,"Rashid, Amani",103,1
+201602,313,Inter Macro Theory,"Nighswander, Tristan",98,1
+201602,313,Inter Macro Theory,"Brennan, Benjamin",97,1
+201602,313,Inter Macro Theory,"Thoma, Mark",75,1
+201602,320,Intro to Econometrics,"Mueller (Scawinski), Rosie",91,1
+201602,320,Intro to Econometrics,"Thoma, Mark",72,1
+201602,327,Intro to Game Theory,"Ellis, Chris",90,1
+201602,330,Urban and Regional,"Cil, Gulcan",90,1
+201602,333,Resource and Env Econ Issues,"Wilson, Kyle",65,1
+201602,340,Issues in Public Econ,"Hunt, Erin",56,1
+201602,350,Labor Market Issues,"Imboden, Christian",85,1
+201602,360,Issues in IO,"Walch, Ryan",45,1
+201602,370,Money and Banking,"Wood, Nicholas",88,1
+201602,380,Intl Econ Issues,"Stageberg, Stephen",78,1
+201602,380,Intl Econ Issues,"Haynes, Stephen",45,1
+201602,390,Probs/Issues in Dev Econ,"Bhattacharyya, Paulomi",59,1
+201602,413,Advanced Macro Theory,"McGough, Bruce",8,2
+201602,418,Econ Analysis of Community Issue,"Harbaugh, Bill",17,1
+201602,421,Intro to Econometrics,"Weber, Caroline",133,1
+201602,422,Forecasting,"Duy, Tim",51,1
+201602,424,Econometrics II,"Evans, George",27,2
+201602,427,Games and Decisions,"van den Nouweland, Anne",25,2
+201602,440,Public Econ,"Ellis, Chris",76,2
+201602,441,Public Econ: Taxation,"Weber, Caroline",76,2
+201602,460,Theory of IO,"Waddell, Glen",79,2
+201602,470,Monetary Policy,"McClung, Nigel",58,2
+201602,481,Intl Trade,"Cristea, Anca",80,2
+201602,482,Globalization,"Cristea, Anca",76,2
+201602,490,Econ Growth and Development,"Burlando, Alfredo",16,2
+201602,607,Core Macro,"Chakraborty, Shankha",18,3
+201602,607,Core Micro,"van den Nouweland, Anne",22,3
+201602,607,Development,"Burlando, Alfredo",11,3
+201602,607,Environmental,"Cameron, Trudy",8,3
+201602,607,Macro Field,"Evans, George",6,3
+201602,607,Micro Econometrics,"Wilson, Wes",11,3
+201601,101,Contemporary Economic Issues,"Urbancic, Mike",238,0
+201601,201,Intro to Econ Analysis: Micro,"Miller, Keaton",306,0
+201601,201,Intro to Econ Analysis: Micro,"Birk, Erica",241,0
+201601,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",148,0
+201601,202,Intro to Econ Analysis: Macro,"Falconer, Jean",198,0
+201601,202,Intro to Econ Analysis: Macro,"Duy, Tim",247,0
+201601,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",99,0
+201601,311,Inter Micro Theory,"Kuhn, Mike",94,1
+201601,311,Inter Micro Theory,"Selby, Rebekah",89,1
+201601,311,Inter Micro Theory,"Burlando, Alfredo",94,1
+201601,311,Inter Micro Theory,"Burlando, Alfredo",96,1
+201601,313,Inter Macro Theory,"Evans, George",90,1
+201601,313,Inter Macro Theory,"Evans, George",89,1
+201601,313,Inter Macro Theory,"Wheeler, William",16,1
+201601,313,Inter Macro Theory,"Thoma, Mark",54,1
+201601,320,Intro to Econometrics,"Mueller (Scawinski), Rosie",94,1
+201601,320,Intro to Econometrics,"Thoma, Mark",67,1
+201601,333,Resource and Env Econ Issues,"Wilson, Kyle",87,1
+201601,340,Issues in Public Econ,"Biemiller, Nathan",76,1
+201601,350,Labor Market Issues,"Imboden, Christian",86,1
+201601,360,Issues in IO,"McKenzie, Taylor",87,1
+201601,370,Money and Banking,"Dombeck, Brian",89,1
+201601,380,Intl Econ Issues,"Stageberg, Stephen",46,1
+201601,380,Intl Econ Issues,"Haynes, Stephen",111,1
+201601,390,Probs/Issues in Dev Econ,"Bhattacharyya, Paulomi",53,1
+201601,399,Health Econ,"Nguyen, Tuan Anh",17,1
+201601,410,"Computational Eocnomics, EC Policy Analysis","Evans, David",21,2
+201601,410,Political Economy,"Ellis, Chris",32,2
+201601,410,Econ Prob PNW Cities,"Whitelaw, Ed",19,2
+201601,411,Advanced Micro Theory,"van den Nouweland, Anne",7,2
+201601,421,Intro to Econometrics,"Cil, Gulcan",89,1
+201601,423,Econometrics,"Kolpin, Van",30,2
+201601,427,Games and Decisions,"Wu, Jiabin",54,2
+201601,440,Public Econ,"Ellis, Chris",77,2
+201601,451,Issues in Labor Economics,"Kuhn, Mike",85,2
+201601,461,IO and Public Policy,"Friedt, Felix",55,2
+201601,470,Monetary Policy,"Duy, Tim",80,2
+201601,480,Intl Finance,"Chakraborty, Shankha",79,2
+201601,481,Intl Trade,"Cristea, Anca",82,2
+201601,491,Issues Growth and Development.,"Chakraborty, Shankha",33,2
+201601,607,Core Macro,"Thoma, Mark",18,3
+201601,607,Core Micro,"Wu, Jiabin",22,3
+201601,607,International,"Cristea, Anca",10,3
+201601,607,Industrial Organizations,"Miller, Keaton",9,3
+201601,607,Macro Field,"Evans, David",9,3
+201601,607,Time Series,"Piger, Jeremy",17,3
+201503,201,Intro to Econ Analysis: Micro,"Waddell, Glen",333,0
+201503,201,Intro to Econ Analysis: Micro,"Miller, Keaton",335,0
+201503,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",147,0
+201503,202,Intro to Econ Analysis: Macro,"Fulton, Chad",269,0
+201503,202,Intro to Econ Analysis: Macro,"Gelfer, Sacha",325,0
+201503,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",142,0
+201503,311,Inter Micro Theory,"Thacker, Michael",83,1
+201503,311,Inter Micro Theory,"Burlando, Alfredo",88,1
+201503,311,Inter Micro Theory,"Burlando, Alfredo",98,1
+201503,313,Inter Macro Theory,"Check, Adam",32,1
+201503,313,Inter Macro Theory,"Nighswander, Tristan",88,1
+201503,313,Inter Macro Theory,"Nguyen, Tuan Anh",84,1
+201503,313,Inter Macro Theory,"Thoma, Mark",67,1
+201503,320,Intro to Econometrics,"Mastromonaco, Ralph",60,1
+201503,320,Intro to Econometrics,"Thoma, Mark",57,1
+201503,330,Urban and Regional,"Urbancic, Mike",199,1
+201503,340,Issues in Public Econ,"Voorheis, John",60,1
+201503,350,Labor Market Issues,"Corbett, Colin",88,1
+201503,360,Issues in IO,"Wyer, Joseph",89,1
+201503,370,Money and Banking,"Brennan, Benjamin",90,1
+201503,380,Intl Econ Issues,"Stageberg, Stephen",55,1
+201503,380,Intl Econ Issues,"Haynes, Stephen",173,1
+201503,390,Probs/Issues in Dev Econ,"McKenzie, Taylor",89,1
+201503,390,Probs/Issues in Dev Econ,"Bhattacharyya, Paulomi",43,1
+201503,399,Behavioral Econ,"Wu, Jiabin",31,1
+201503,410,Crime Economics,"Hansen, Ben",92,2
+201503,410,Globalization,"Cristea, Anca",66,2
+201503,419,Econ Analysis of Community Issue,"Harbaugh, Bill",10,1
+201503,421,Intro to Econometrics,"Weber, Caroline",144,1
+201503,425,Econometrics III,"Cameron, Trudy",20,2
+201503,427,Games and Decisions,"Wu, Jiabin",80,2
+201503,432,Economy of PNW,"Whitelaw, Ed",33,2
+201503,434,Environmental Econ,"Mastromonaco, Ralph",80,2
+201503,435,Natural Resource Econ,"Cameron, Trudy",48,2
+201503,443,Health Econ,"Hansen, Ben",88,2
+201503,451,Issues in Labor Economics,"Urbancic, Mike",82,2
+201503,481,Intl Trade,"Cristea, Anca",87,2
+201503,607,"Applied Behavioral Economics, Applied Behavioral Economics","Kuhn, Mike",5,3
+201503,607,Bayesian Economtrics,"Piger, Jeremy",13,3
+201503,607,Core Macro,"Evans, David",13,3
+201503,607,Core Micro,"Kolpin, Van",18,3
+201503,607,Game Theory,"Kolpin, Van",3,3
+201503,607,Industrial Organizations,"Miller, Keaton",7,3
+201503,607,Labor/Urban,"Waddell, Glen",8,3
+201502,201,Intro to Econ Analysis: Micro,"Selby, Rebekah",338,0
+201502,201,Intro to Econ Analysis: Micro,"Harbaugh, Bill",29,0
+201502,201,Intro to Econ Analysis: Micro,"Rashid, Amani",90,0
+201502,201,Intro to Econ Analysis: Micro,"Waddell, Glen",279,0
+201502,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",206,0
+201502,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",315,0
+201502,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",325,0
+201502,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",111,0
+201502,311,Inter Micro Theory,"Minard, Simeon",88,1
+201502,311,Inter Micro Theory,"McClung, Nigel",91,1
+201502,311,Inter Micro Theory,"Jerman, Michael",62,1
+201502,311,Inter Micro Theory,"Dombeck, Brian",90,1
+201502,313,Inter Macro Theory,"McGough, Bruce",124,1
+201502,313,Inter Macro Theory,"Nighswander, Tristan",49,1
+201502,313,Inter Macro Theory,"Evans, David",73,1
+201502,313,Inter Macro Theory,"Thoma, Mark",75,1
+201502,320,Intro to Econometrics,"Nguyen, Tuan Anh",105,1
+201502,320,Intro to Econometrics,"Thoma, Mark",42,1
+201502,327,Intro to Game Theory,"Ellis, Chris",89,1
+201502,333,Resource and Env Econ Issues,"Mueller (Scawinski), Rosie",56,1
+201502,340,Issues in Public Econ,"Hunt, Erin",88,1
+201502,350,Labor Market Issues,"Adams, Nathan",91,1
+201502,360,Issues in IO,"Bryan, Thomas",85,1
+201502,370,Money and Banking,"Check, Adam",87,1
+201502,380,Intl Econ Issues,"Friedt, Felix",87,1
+201502,380,Intl Econ Issues,"Haynes, Stephen",163,1
+201502,390,Probs/Issues in Dev Econ,"Bhattacharyya, Paulomi",41,1
+201502,410,"Computational Eocnomics, EC Policy Analysis","Evans, David",20,2
+201502,410,Globalization,"Cristea, Anca",78,2
+201502,413,Advanced Macro Theory,"McGough, Bruce",12,2
+201502,418,Econ Analysis of Community Issue,"Harbaugh, Bill",13,1
+201502,421,Intro to Econometrics,"Weber, Caroline",130,1
+201502,422,Forecasting,"Duy, Tim",47,1
+201502,424,Econometrics II,"Evans, George",24,2
+201502,440,Public Econ,"Ellis, Chris",78,2
+201502,443,Health Econ,"Hansen, Ben",92,2
+201502,450,Labor Economics,"Birk, Erica",80,2
+201502,460,Theory of IO,"Waddell, Glen",71,2
+201502,480,Intl Finance,"Chakraborty, Shankha",94,2
+201502,481,Intl Trade,"Cristea, Anca",81,2
+201502,493,History of Economic Thought,"Stageberg, Stephen",40,2
+201502,607,Core Macro,"Evans, George",13,3
+201502,607,Core Micro,"van den Nouweland, Anne",18,3
+201502,607,Environmental,"Cameron, Trudy",12,3
+201502,607,Macro Field,"Chakraborty, Shankha",10,3
+201502,607,Micro Econometrics,"Hansen, Ben",13,3
+201501,101,Contemporary Economic Issues,"Urbancic, Mike",223,0
+201501,201,Intro to Econ Analysis: Micro,"Selby, Rebekah",275,0
+201501,201,Intro to Econ Analysis: Micro,"Miller, Keaton",292,0
+201501,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",147,0
+201501,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",256,0
+201501,202,Intro to Econ Analysis: Macro,"Duy, Tim",331,0
+201501,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",143,0
+201501,311,Inter Micro Theory,"McClung, Nigel",88,1
+201501,311,Inter Micro Theory,"Jerman, Michael",86,1
+201501,311,Inter Micro Theory,"Kuhn, Mike",89,1
+201501,311,Inter Micro Theory,"Dombeck, Brian",143,1
+201501,313,Inter Macro Theory,"Evans, George",87,1
+201501,313,Inter Macro Theory,"Evans, George",88,1
+201501,313,Inter Macro Theory,"Gelfer, Sacha",84,1
+201501,313,Inter Macro Theory,"Thoma, Mark",66,1
+201501,320,Intro to Econometrics,"Mastromonaco, Ralph",123,1
+201501,320,Intro to Econometrics,"Thoma, Mark",72,1
+201501,327,Intro to Game Theory,"Ellis, Chris",88,1
+201501,333,Resource and Env Econ Issues,"Kolstoe, Sonja",86,1
+201501,340,Issues in Public Econ,"Voorheis, John",85,1
+201501,350,Labor Market Issues,"Corbett, Colin",90,1
+201501,360,Issues in IO,"Wyer, Joseph",89,1
+201501,370,Money and Banking,"Fulton, Chad",85,1
+201501,380,Intl Econ Issues,"Friedt, Felix",85,1
+201501,380,Intl Econ Issues,"Haynes, Stephen",149,1
+201501,390,Probs/Issues in Dev Econ,"McKenzie, Taylor",87,1
+201501,411,Advanced Micro Theory,"van den Nouweland, Anne",11,2
+201501,421,Intro to Econometrics,"Wilson, Wes",112,1
+201501,423,Econometrics,"Kolpin, Van",30,2
+201501,427,Games and Decisions,"Wu, Jiabin",52,2
+201501,450,Labor Economics,"Birk, Erica",59,2
+201501,451,Issues in Labor Economics,"Kuhn, Mike",75,2
+201501,461,IO and Public Policy,"Thacker, Michael",71,2
+201501,470,Monetary Policy,"Falconer, Jean",59,2
+201501,480,Intl Finance,"Chakraborty, Shankha",81,2
+201501,490,Econ Growth and Development,"Burlando, Alfredo",76,2
+201501,491,Issues Growth and Development.,"Chakraborty, Shankha",55,2
+201501,607,Core Macro,"McGough, Bruce",14,3
+201501,607,Core Micro,"Wu, Jiabin",19,3
+201501,607,Environmental,"Mastromonaco, Ralph",16,3
+201501,607,Monetary Theory,"Thoma, Mark",10,3
+201501,607,Public,"Ellis, Chris",10,3
+201501,607,Time Series,"Piger, Jeremy",15,3
+201403,201,Intro to Econ Analysis: Micro,"Fitch-Fleischmann, Benjamin",343,0
+201403,201,Intro to Econ Analysis: Micro,"Waddell, Glen",331,0
+201403,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",329,0
+201403,202,Intro to Econ Analysis: Macro,"Fulton, Chad",271,0
+201403,311,Inter Micro Theory,"Query, Jason",117,1
+201403,311,Inter Micro Theory,"Burlando, Alfredo",123,1
+201403,313,Inter Macro Theory,"Friedt, Felix",101,1
+201403,313,Inter Macro Theory,"Voorheis, John",95,1
+201403,313,Inter Macro Theory,"Birk, Erica",99,1
+201403,320,Intro to Econometrics,"Mastromonaco, Ralph",118,1
+201403,327,Intro to Game Theory,"Urbancic, Mike",125,1
+201403,340,Issues in Public Econ,"Wilson, Matthew",72,1
+201403,350,Labor Market Issues,"Lee, Logan",89,1
+201403,370,Money and Banking,"Roehling, Allison",105,1
+201403,390,Probs/Issues in Dev Econ,"Thompson, Jonathan",105,1
+201403,419,Econ Analysis of Community Issue,"Stone, Joe",18,1
+201403,421,Intro to Econometrics,"Weber, Caroline",121,1
+201403,425,Econometrics III,"Cameron, Trudy",19,2
+201403,428,Behav and Exp Econ,"Harbaugh, Bill",60,2
+201403,432,Economy of PNW,"Whitelaw, Ed",42,2
+201403,434,Environmental Econ,"Mastromonaco, Ralph",48,2
+201403,441,Public Econ: Taxation,"Weber, Caroline",59,2
+201403,443,Health Econ,"Hansen, Ben",81,2
+201403,451,Issues in Labor Economics,"Kuhn, Mike",68,2
+201403,460,Theory of IO,"Waddell, Glen",41,2
+201403,480,Intl Finance,"Chakraborty, Shankha",80,2
+201403,481,Intl Trade,"Cristea, Anca",81,2
+201403,607,"Applied Behavioral Economics, Applied Behavioral Economics","Kuhn, Mike",11,3
+201403,607,Computational,"McGough, Bruce",8,3
+201403,607,Core Macro,"McGough, Bruce",14,3
+201403,607,Core Micro,"Kolpin, Van",16,3
+201403,607,Health/Crime,"Hansen, Ben",7,3
+201403,607,International,"Cristea, Anca",9,3
+201403,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",135,0
+201403,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",116,0
+201403,311,Inter Micro Theory,"Burlando, Alfredo",124,1
+201403,320,Intro to Econometrics,"Thoma, Mark",58,1
+201403,380,Intl Econ Issues,"Haynes, Stephen",90,1
+201402,201,Intro to Econ Analysis: Micro,"Sly, Nick",338,0
+201402,201,Intro to Econ Analysis: Micro,"Cil, Gulcan",278,0
+201402,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",213,0
+201402,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",332,0
+201402,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",269,0
+201402,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",98,0
+201402,311,Inter Micro Theory,"Hansen, Ben",93,1
+201402,311,Inter Micro Theory,"Mastromonaco, Ralph",100,1
+201402,313,Inter Macro Theory,"Dombeck, Brian",87,1
+201402,313,Inter Macro Theory,"Gelfer, Sacha",93,1
+201402,313,Inter Macro Theory,"Nguyen, Tuan Anh",90,1
+201402,313,Inter Macro Theory,"Thoma, Mark",78,1
+201402,320,Intro to Econometrics,"Wilson, Wes",113,1
+201402,320,Intro to Econometrics,"Thoma, Mark",27,1
+201402,327,Intro to Game Theory,"Ellis, Chris",59,1
+201402,330,Urban and Regional,"Urbancic, Mike",90,1
+201402,333,Resource and Env Econ Issues,"Fitch-Fleischmann, Benjamin",89,1
+201402,350,Labor Market Issues,"Corbett, Colin",89,1
+201402,360,Issues in IO,"Wyer, Joseph",81,1
+201402,370,Money and Banking,"Check, Adam",90,1
+201402,380,Intl Econ Issues,"Roehling, Allison",90,1
+201402,380,Intl Econ Issues,"Haynes, Stephen",90,1
+201402,399,Behavioral Econ,"Wu, Jiabin",42,1
+201402,410,Globalization,"Cristea, Anca",74,2
+201402,410,Political Economy,"Ellis, Chris",50,2
+201402,413,Advanced Macro Theory,"Gray, Joanna",12,2
+201402,418,Econ Analysis of Community Issue,"Stone, Joe",16,1
+201402,421,Intro to Econometrics,"Weber, Caroline",116,1
+201402,424,Econometrics II,"Evans, George",26,2
+201402,434,Environmental Econ,"Mastromonaco, Ralph",25,2
+201402,440,Public Econ,"Ellis, Chris",78,2
+201402,441,Public Econ: Taxation,"Weber, Caroline",34,2
+201402,450,Labor Economics,"Waddell, Glen",78,2
+201402,460,Theory of IO,"Wilson, Wes",79,2
+201402,480,Intl Finance,"Chakraborty, Shankha",72,2
+201402,481,Intl Trade,"Cristea, Anca",68,2
+201402,607,Core Macro,"Chakraborty, Shankha",15,3
+201402,607,Core Micro,"van den Nouweland, Anne",17,3
+201402,607,Game Theory,"van den Nouweland, Anne",7,3
+201402,607,International Trade,"Sly, Nick",7,3
+201402,607,Macro Field,"Evans, George",9,3
+201402,607,Micro Econometrics,"Waddell, Glen",18,3
+201402,201,Intro to Econ Analysis: Micro,"Harbaugh, Bill",31,0
+201402,311,Inter Micro Theory,"Hansen, Ben",117,1
+201401,101,Contemporary Economic Issues,"Urbancic, Mike",224,0
+201401,201,Intro to Econ Analysis: Micro,"Sly, Nick",336,0
+201401,201,Intro to Econ Analysis: Micro,"Query, Jason",281,0
+201401,201,Intro to Econ Analysis: Micro,"Haynes, Stephen",166,0
+201401,202,Intro to Econ Analysis: Macro,"Urbancic, Mike",275,0
+201401,202,Intro to Econ Analysis: Macro,"Duy, Tim",335,0
+201401,202,Intro to Econ Analysis: Macro,"Haynes, Stephen",140,0
+201401,311,Inter Micro Theory,"McKenzie, Taylor",91,1
+201401,311,Inter Micro Theory,"Wyer, Joseph",89,1
+201401,311,Inter Micro Theory,"Thacker, Michael",103,1
+201401,313,Inter Macro Theory,"Check, Adam",91,1
+201401,313,Inter Macro Theory,"Gelfer, Sacha",83,1
+201401,313,Inter Macro Theory,"Fulton, Chad",89,1
+201401,320,Intro to Econometrics,"Piger, Jeremy",125,1
+201401,327,Intro to Game Theory,"Wilson, Matthew",90,1
+201401,333,Resource and Env Econ Issues,"Kolstoe, Sonja",65,1
+201401,340,Issues in Public Econ,"Voorheis, John",83,1
+201401,350,Labor Market Issues,"Corbett, Colin",89,1
+201401,360,Issues in IO,"Thompson, Jonathan",88,1
+201401,380,Intl Econ Issues,"Haynes, Stephen",94,1
+201401,390,Probs/Issues in Dev Econ,"Selby, Rebekah",87,1
+201401,399,Behavioral Econ,"Wu, Jiabin",24,1
+201401,410,Math Econ,"McGough, Bruce",66,2
+201401,410,Natural Resource Econ,"Cameron, Trudy",51,2
+201401,411,Advanced Micro Theory,"van den Nouweland, Anne",16,2
+201401,421,Intro to Econometrics,"Wilson, Wes",119,1
+201401,423,Econometrics,"Lambert, Peter",30,2
+201401,427,Games and Decisions,"van den Nouweland, Anne",45,2
+201401,428,Behav and Exp Econ,"Harbaugh, Bill",66,2
+201401,451,Issues in Labor Economics,"Kuhn, Mike",60,2
+201401,481,Intl Trade,"Sly, Nick",57,2
+201401,490,Econ Growth and Development,"Burlando, Alfredo",51,2
+201401,607,Core Macro,"McGough, Bruce",15,3
+201401,607,Core Micro,"Wu, Jiabin",18,3
+201401,607,Development,"Burlando, Alfredo",13,3
+201401,607,Industrial Organizations,"Wilson, Wes",5,3
+201401,607,Public,"Lambert, Peter",12,3
+201401,607,Time Series,"Piger, Jeremy",21,3
+201401,399,Health Econ,"Lee, Logan",35,1
