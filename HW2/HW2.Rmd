@@ -94,7 +94,7 @@ The data file `nlsy79.csv` includes this information and some additional variabl
 
 
  --------------------------------------------------------------------------------
-```{}
+```{r}
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
@@ -109,7 +109,7 @@ nlsy79 <- read_csv('nlsy79.csv')
 
  a. Re-code everyone who has 8 or fewer years of education as 8 in the data. We will interpret this category as "8 years or less".
  
-```{} 
+```{r} 
  nlsy79 <- nlsy79 %>%
 mutate(hgc = ifelse(hgc<8, 8, hgc))
 
@@ -117,7 +117,7 @@ mutate(hgc = ifelse(hgc<8, 8, hgc))
 
  b. Use ggplot to make a bar chart showing the share of the sample with each level of education. What percentage of the population has 17 years of education or more?
  
-```{} 
+```{r} 
  ggplot(nlsy79, aes(x=hgc)) +
 geom_bar(color = "black", stat="count", fill = "green") +
 xlab("Years of School") + ylab("Count of Individuals")
@@ -129,7 +129,7 @@ xlab("Years of School") + ylab("Count of Individuals")
 
  c. Use ggplot to make a scatterplot showing the relationship between earnings and education (recoded as in part a), include the line of best fit. What is the relationship between earnings and educcation?
  
-```{}  
+```{r}  
  ggplot(nlsy79, aes(x = hgc, y = earn2009)) +
 geom_point() +
 geom_smooth(method = 'lm', aes(color = "red")) +
@@ -143,7 +143,7 @@ xlab("Years of School") + ylab("Salary in 2009")
  
 
  d. Use ggplot to make a figure showing the average earnings by years of education with the line of best fit. Comment on how well the line of best fit matches the average earnings data.
-```{} 
+```{r} 
  ggplot(nlsy79, aes(x = hgc, y = earn2009)) +
  geom_point(stat = "summary", fun = "mean") +
  geom_smooth(method = 'lm') +
